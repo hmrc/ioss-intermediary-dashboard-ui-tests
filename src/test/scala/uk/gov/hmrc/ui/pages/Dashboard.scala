@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package uk.gov.hmrc.ui.pages
 
 import uk.gov.hmrc.configuration.TestEnvironment
@@ -23,7 +22,7 @@ object Dashboard extends BasePage {
 
   private val dashboardUrl: String =
     TestEnvironment.url("ioss-intermediary-dashboard-frontend")
-  private val journeyUrl: String = "/intermediary-dashboard"
+  private val journeyUrl: String   = "/intermediary-dashboard"
 
   def goToDashboardJourney(): Unit =
     get(dashboardUrl + journeyUrl)
