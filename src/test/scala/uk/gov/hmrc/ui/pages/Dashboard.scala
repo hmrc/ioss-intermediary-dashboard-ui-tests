@@ -42,4 +42,14 @@ object Dashboard extends BasePage {
   def clickLink(link: String): Unit =
     click(By.id(link))
 
+  def checkName(nameType: String): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    if (nameType == "organisation") {
+      Assert.assertTrue(htmlBody.contains("Company Name"))
+    } else {
+      Assert.assertTrue(htmlBody.contains("first middle last"))
+    }
+
+  }
+
 }

@@ -45,6 +45,8 @@ object Auth extends BasePage {
         sendKeys(By.id("input-0-0-value"), "900000001")
       } else if (vrnType == "internalServerError") {
         sendKeys(By.id("input-0-0-value"), "800000001")
+      } else if (vrnType == "individual") {
+        sendKeys(By.id("input-0-0-value"), "700000002")
       } else {
         sendKeys(By.id("input-0-0-value"), "100000001")
       }

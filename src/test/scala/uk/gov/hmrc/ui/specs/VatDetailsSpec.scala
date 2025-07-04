@@ -18,12 +18,12 @@ package uk.gov.hmrc.ui.specs
 
 import uk.gov.hmrc.ui.pages.*
 
-class VatDetailsKickoutSpec extends BaseSpec {
+class VatDetailsSpec extends BaseSpec {
 
   private val dashboard = Dashboard
   private val auth      = Auth
 
-  Feature("Vat Details Kickout journeys") {
+  Feature("Extra Vat Details journeys") {
 
     Scenario("Intermediary is presented with problem page if VAT info returns not found status.") {
 
@@ -45,6 +45,32 @@ class VatDetailsKickoutSpec extends BaseSpec {
 
       Then("the intermediary is shown the sorry there is a problem page")
       dashboard.checkProblemPage()
+    }
+
+    Scenario("Intermediary company name is displayed on dashboard for an organisation") {
+
+      Given(
+        "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info is for an organisation"
+      )
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard")
+
+      Then("the intermediary company name is displayed on the dashboard")
+      dashboard.checkJourneyUrl("your-account")
+      dashboard.checkName("organisation")
+    }
+
+    Scenario("Intermediary individual name is displayed on dashboard for an individual") {
+
+      Given(
+        "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info is for an individual"
+      )
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "individual")
+
+      Then("the intermediary company name is displayed on the dashboard")
+      dashboard.checkJourneyUrl("your-account")
+      dashboard.checkName("individual")
     }
   }
 }
