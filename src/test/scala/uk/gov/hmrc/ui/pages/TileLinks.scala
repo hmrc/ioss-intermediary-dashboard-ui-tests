@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.specs
+package uk.gov.hmrc.ui.pages
 
-import uk.gov.hmrc.ui.pages._
+import org.scalatest.matchers.should.Matchers.*
+import uk.gov.hmrc.configuration.TestEnvironment
 
-class DashboardSpec extends BaseSpec {
+object TileLinks extends BasePage {
 
-  private val dashboard = Dashboard
-  private val auth      = Auth
+  private val registrationUrl: String =
+    TestEnvironment.url("ioss-netp-registration-frontend")
+  private val registrationJourneyUrl: String   = "/intermediary-netp"
 
-  Feature("Dashboard journeys") {
+  def checkRegistrationJourneyUrl(page: String): Unit =
+    getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl/$page")
 
-    Scenario("Intermediary accesses the IOSS Intermediary Dashboard Service") {
-
-      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
-      auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
-      dashboard.checkJourneyUrl("your-account")
-    }
-  }
 }

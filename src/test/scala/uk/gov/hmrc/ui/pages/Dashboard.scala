@@ -17,6 +17,10 @@
 package uk.gov.hmrc.ui.pages
 
 import uk.gov.hmrc.configuration.TestEnvironment
+import org.junit.Assert
+import uk.gov.hmrc.selenium.webdriver.Driver
+import org.scalatest.matchers.should.Matchers.*
+import org.openqa.selenium.By
 
 object Dashboard extends BasePage {
 
@@ -26,5 +30,16 @@ object Dashboard extends BasePage {
 
   def goToDashboardJourney(): Unit =
     get(dashboardUrl + journeyUrl)
+
+  def checkJourneyUrl(page: String): Unit =
+    getCurrentUrl should startWith(s"$dashboardUrl$journeyUrl/$page")
+
+  def checkProblemPage(): Unit = {
+    val h1 = Driver.instance.findElement(By.tagName("h1")).getText
+    Assert.assertTrue(h1.equals("Sorry, there is a problem with the service"))
+  }
+
+  def clickLink(link: String): Unit =
+    click(By.id(link))
 
 }
