@@ -16,21 +16,28 @@
 
 package uk.gov.hmrc.ui.specs
 
-import uk.gov.hmrc.ui.pages._
+import uk.gov.hmrc.ui.pages.*
 
-class DashboardSpec extends BaseSpec {
+class TileLinksSpec extends BaseSpec {
 
   private val dashboard = Dashboard
   private val auth      = Auth
+  private val tileLinks = TileLinks
 
-  Feature("Dashboard journeys") {
+  Feature("Tile Link journeys") {
 
-    Scenario("Intermediary accesses the IOSS Intermediary Dashboard Service") {
+    Scenario("Intermediary can access the NETP Registration Service via the Intermediary Dashboard") {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard(true, true, "standard")
       dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the 'Add a new client' link on the dashboard")
+      dashboard.clickLink("add-client")
+
+      Then("the intermediary is redirected to the first page of the NETP Registration service")
+      tileLinks.checkRegistrationJourneyUrl("client-uk-based")
     }
   }
 }
