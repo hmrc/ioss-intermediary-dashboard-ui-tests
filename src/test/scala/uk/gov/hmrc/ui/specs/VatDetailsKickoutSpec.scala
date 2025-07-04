@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.*
 class VatDetailsKickoutSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   Feature("Vat Details Kickout journeys") {
 
@@ -37,7 +37,9 @@ class VatDetailsKickoutSpec extends BaseSpec {
 
     Scenario("Intermediary is presented with problem page if VAT info returns internal server error.") {
 
-      Given("the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info returns internal server error")
+      Given(
+        "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info returns internal server error"
+      )
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard(true, true, "internalServerError")
 

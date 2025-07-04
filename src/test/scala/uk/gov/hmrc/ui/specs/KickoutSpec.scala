@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages._
 class KickoutSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   Feature("Kickout journeys") {
 

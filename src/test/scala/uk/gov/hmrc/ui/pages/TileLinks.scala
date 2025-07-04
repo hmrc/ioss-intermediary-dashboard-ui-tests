@@ -21,9 +21,9 @@ import uk.gov.hmrc.configuration.TestEnvironment
 
 object TileLinks extends BasePage {
 
-  private val registrationUrl: String =
+  private val registrationUrl: String        =
     TestEnvironment.url("ioss-netp-registration-frontend")
-  private val registrationJourneyUrl: String   = "/intermediary-netp"
+  private val registrationJourneyUrl: String = "/intermediary-netp"
 
   def checkRegistrationJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl/$page")
