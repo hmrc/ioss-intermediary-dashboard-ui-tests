@@ -23,7 +23,7 @@ object TileLinks extends BasePage {
 
   private val registrationUrl: String        =
     TestEnvironment.url("ioss-netp-registration-frontend")
-  private val registrationJourneyUrl: String = "/intermediary-netp"
+  private val registrationJourneyUrl: String = "/pay-clients-vat-on-eu-sales/register-new-ioss-client"
 
   def checkRegistrationJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl/$page")

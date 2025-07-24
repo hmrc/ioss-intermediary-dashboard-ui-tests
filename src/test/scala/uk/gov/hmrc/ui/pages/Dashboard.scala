@@ -26,7 +26,7 @@ object Dashboard extends BasePage {
 
   private val dashboardUrl: String =
     TestEnvironment.url("ioss-intermediary-dashboard-frontend")
-  private val journeyUrl: String   = "/intermediary-dashboard"
+  private val journeyUrl: String   = "/pay-clients-vat-on-eu-sales/manage-ioss-returns-payments-clients"
 
   def goToDashboardJourney(): Unit =
     get(dashboardUrl + journeyUrl)
