@@ -39,5 +39,19 @@ class TileLinksSpec extends BaseSpec {
       Then("the intermediary is redirected to the first page of the NETP Registration service")
       tileLinks.checkRegistrationJourneyUrl("client-uk-based")
     }
+
+    Scenario("Intermediary can amend their registration via the IOSS Intermediary Dashboard Service link") {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the Change your registration link")
+      dashboard.clickLink("change-your-registration")
+
+      Then("the intermediary is redirected to the Intermediary registration service")
+      tileLinks.checkIntermediaryRegistrationJourneyUrl("change-your-registration")
+    }
   }
 }
