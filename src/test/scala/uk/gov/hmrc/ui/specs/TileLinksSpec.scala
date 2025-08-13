@@ -53,5 +53,19 @@ class TileLinksSpec extends BaseSpec {
       Then("the intermediary is redirected to the Intermediary registration service")
       tileLinks.checkIntermediaryRegistrationJourneyUrl("change-your-registration")
     }
+
+    Scenario("Intermediary can leave the service via the IOSS Intermediary Dashboard Service link") {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the Leave this service link")
+      dashboard.clickLink("leave-scheme")
+
+      Then("the intermediary is redirected to the Intermediary registration service")
+      tileLinks.checkIntermediaryExclusionsJourneyUrl()
+    }
   }
 }
