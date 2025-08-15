@@ -30,10 +30,18 @@ object TileLinks extends BasePage {
   private val intermediaryRegistrationJourneyUrl: String =
     "/pay-clients-vat-on-eu-sales/register-import-one-stop-shop-intermediary"
 
+  private val intermediaryExclusionsUrl: String        =
+    TestEnvironment.url("ioss-intermediary-exclusions-frontend")
+  private val intermediaryExclusionsJourneyUrl: String =
+    "/pay-clients-vat-on-eu-sales/leave-import-one-stop-shop-intermediary"
+
   def checkRegistrationJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl/$page")
 
   def checkIntermediaryRegistrationJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$intermediaryRegistrationUrl$intermediaryRegistrationJourneyUrl/$page")
+
+  def checkIntermediaryExclusionsJourneyUrl(): Unit =
+    getCurrentUrl should startWith(intermediaryExclusionsUrl + intermediaryExclusionsJourneyUrl)
 
 }
