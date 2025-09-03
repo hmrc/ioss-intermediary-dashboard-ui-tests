@@ -19,10 +19,9 @@ package uk.gov.hmrc.ui.data
 import java.time.LocalDate
 
 object PendingRegistrations {
-  val yesterday = LocalDate.now().minusDays(1)
+  val yesterday  = LocalDate.now().minusDays(1)
   val twoDaysAgo = LocalDate.now().minusDays(2)
-  
-  
+
   val data: List[String] =
     List(
       s"""
@@ -111,6 +110,24 @@ object PendingRegistrations {
         |  "uniqueActivationCode": "5rz0KbitVWe5fIQizCMYx8kxSTGCN7ouUA1i4E4hpkMHmJTLmIU=",
         |  "intermediaryDetails": {
         |    "intermediaryNumber": "IN9001112223",
+        |    "intermediaryName": "Intermediary Company Name"
+        |  }
+        |}
+        |""".stripMargin,
+      s"""
+        |{
+        |  "_id": {
+        |    "$$oid": "68b855a41ca3d6d1c1cb6e4a"
+        |  },
+        |  "journeyId": "6bf0b5aa-c9f1-4860-8bf4-a428c033c954",
+        |  "uniqueUrlCode": "GBVKFL",
+        |  "data": "uVAG0e+TN1UvMUqILMfaTgglSAo3/vWEkpr4+iwigZe/t5jf/s8jyioIXbN8OC/fBqTzHR13rgHvHr+zvkEq8N/njpNC88okeNETzOykDTjQSOtmrmDCtB9Y2/AzDnVZcMGOSTibNAdceg2CyVqtwj8E2YZlL6QqF7Ng+mbhxc50yvtruzN3JY57vSWE0EyKF5lrddlUNXUKd5kGROezpEEiT2vJlAPkN/9RkL0UhZYWA91BghaqALFOKIC4nitcaDvqA3aeyh7iHJeMDyDNHkLtWpwnzBfjjtSOjzoMQtxAVxDI6RAaOMkNyAAMkKau/Q4+vWvul4lofEy5SdD/Y0MbPTeAMTd0wtyobya32TJH47bwoNdQm01Fe9cAgYMqCE0lLE3BUGtDL98CFMSJV/h/pWPr+P+QIwEgtr1h5vv52C00LHyOuhv8cM+Gs6q5g2K1gnik+Wt6Wm3LtI8R6mAp57zrnVZQG+sh33MMkgmzG+iV2ivxOy/xAnT8ksggJYZ8zmxl3jwv1XRT0GZP/SLuKhPzYKQDEZ759PF4DHJmETiUWKc0rshqtoJbetIsN29VgNVAlu4vNN2ZI7pgg3w6CKYJ0Mb2PgZTK8QRoIFhC6bKTngG8ac3b/51z4htJJsAERbouVRR9ZpV74mSP2mpmpmQjb7IV8fHIRL2ku846wiy6TJ4GO+tQrOwMoiCTgHiN730ORFitCfe/9ffDcAXVxQtYBiLQ3jubia6Z9fraKmLX4/UbttN6bKzJAJ1uw87pZoMolVXkd6+8Zm+zK4sG/V6rEAIouww7lRPTZBXqqqW/JcKm5Oi/eTRRBeg/QEO1wz3kcnLMvkeVTqnn14u3ySIheFtEUO0f/U5P5GGsvmH3mPeMcLpNnEudacubRIIzi9hgpKiKJk6Ycxc34ygzQsaMwu9wXA=",
+        |  "lastUpdated": {
+        |    "$$date": "${yesterday}T14:50:12.589Z"
+        |  },
+        |  "uniqueActivationCode": "GFkDVR/GuyigCoYJTsb7OrjCGF4biV6h4OdxqlnKsMxXf6u8LUY=",
+        |  "intermediaryDetails": {
+        |    "intermediaryNumber": "IN9001112225",
         |    "intermediaryName": "Intermediary Company Name"
         |  }
         |}

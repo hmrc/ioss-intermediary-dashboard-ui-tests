@@ -32,9 +32,13 @@ object PendingRegistration extends BasePage {
     }
   }
 
-  def checkClientsAwaitingActivationHeading(): Unit = {
+  def checkClientsAwaitingActivationHeading(version: String): Unit = {
     val h1 = Driver.instance.findElement(By.tagName("h1")).getText
-    Assert.assertTrue(h1.equals("5 clients awaiting activation"))
+    if (version == "single") {
+      Assert.assertTrue(h1.equals("1 client awaiting activation"))
+    } else {
+      Assert.assertTrue(h1.equals("5 clients awaiting activation"))
+    }
   }
 
   def selectClientLink(link: String): Unit =
@@ -43,5 +47,10 @@ object PendingRegistration extends BasePage {
   def checkClientName(clientName: String): Unit = {
     val h1 = Driver.instance.findElement(By.tagName("h1")).getText
     Assert.assertTrue(h1.equals(s"$clientName has not activated their account"))
+  }
+
+  def noClientsAwaitingActivationLink(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("clients awaiting activation"))
   }
 }

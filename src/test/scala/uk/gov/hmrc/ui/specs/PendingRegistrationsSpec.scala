@@ -20,10 +20,10 @@ import uk.gov.hmrc.ui.pages.*
 
 class PendingRegistrationsSpec extends BaseSpec {
 
-  private val dashboard = Dashboard
-  private val auth      = Auth
-  private val tileLinks      = TileLinks
-  private val pendingRegistration      = PendingRegistration
+  private val dashboard           = Dashboard
+  private val auth                = Auth
+  private val tileLinks           = TileLinks
+  private val pendingRegistration = PendingRegistration
 
   Feature("Pending registration journeys") {
 
@@ -31,7 +31,7 @@ class PendingRegistrationsSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "default")
       dashboard.checkJourneyUrl("your-account")
 
       Then("the clients awaiting activation warning is displayed")
@@ -44,8 +44,8 @@ class PendingRegistrationsSpec extends BaseSpec {
       dashboard.checkJourneyUrl("client-awaiting-activation")
 
       And("there are 5 clients awaiting activation")
-      pendingRegistration.checkClientsAwaitingActivationHeading()
-      
+      pendingRegistration.checkClientsAwaitingActivationHeading("plural")
+
       When("the intermediary selects the first client in the list")
       pendingRegistration.selectClientLink("client-not-activated\\/08c11d8b-e3e7-47b1-9fb1-d4efab81821d")
 
@@ -69,17 +69,41 @@ class PendingRegistrationsSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "noPending")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the clients awaiting activation warning is not displayed")
+      pendingRegistration.checkClientsAwaitingActivationWarning(false)
+
+      And("there is no link for clients awaiting activation on the dashboard")
+      pendingRegistration.noClientsAwaitingActivationLink()
+    }
+
+    Scenario("Intermediary has one client awaiting activation") {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "onePending")
       dashboard.checkJourneyUrl("your-account")
 
       Then("the clients awaiting activation warning is displayed")
       pendingRegistration.checkClientsAwaitingActivationWarning(true)
 
-      When("the intermediary clicks the '5 clients awaiting activation' link on the dashboard")
-      dashboard.clickLink("pending-client-plural")
-    }
+      When("the intermediary clicks the '1 client awaiting activation' link on the dashboard")
+      dashboard.clickLink("pending-client-singular")
 
-//no pending registrations
-    //1 pending reg
+      Then("the intermediary is on the client-awaiting-activation page")
+      dashboard.checkJourneyUrl("client-awaiting-activation")
+
+      And("there is 1 client awaiting activation")
+      pendingRegistration.checkClientsAwaitingActivationHeading("single")
+
+      When("the intermediary selects the only client in the list")
+      pendingRegistration.selectClientLink("client-not-activated\\/6bf0b5aa-c9f1-4860-8bf4-a428c033c954")
+
+      Then("the intermediary is on the client-not-activated page for the only client in the list")
+      tileLinks.checkRegistrationJourneyUrl("client-not-activated/6bf0b5aa-c9f1-4860-8bf4-a428c033c954")
+      pendingRegistration.checkClientName("1 registration")
+    }
   }
 }

@@ -64,5 +64,7 @@ object MongoConnection {
 
   def dropPendingRegistrations(): Unit = {
     dropRecord("ioss-netp-registration", "pending-registration", "IN9001112223")
+    dropRecord("ioss-netp-registration", "pending-registration", "IN9001112224")
+    dropRecord("ioss-netp-registration", "pending-registration", "IN9001112225")
   }
 }

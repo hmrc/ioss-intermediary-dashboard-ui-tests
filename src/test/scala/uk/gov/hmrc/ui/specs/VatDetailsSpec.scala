@@ -29,7 +29,7 @@ class VatDetailsSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info returns 'not found'")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "notFound")
+      auth.loginUsingAuthorityWizard(true, true, "notFound", "default")
 
       Then("the intermediary is shown the sorry there is a problem page")
       dashboard.checkProblemPage()
@@ -41,7 +41,7 @@ class VatDetailsSpec extends BaseSpec {
         "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info returns internal server error"
       )
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "internalServerError")
+      auth.loginUsingAuthorityWizard(true, true, "internalServerError", "default")
 
       Then("the intermediary is shown the sorry there is a problem page")
       dashboard.checkProblemPage()
@@ -53,7 +53,7 @@ class VatDetailsSpec extends BaseSpec {
         "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info is for an organisation"
       )
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "default")
 
       Then("the intermediary company name is displayed on the dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -66,7 +66,7 @@ class VatDetailsSpec extends BaseSpec {
         "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info is for an individual"
       )
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "individual")
+      auth.loginUsingAuthorityWizard(true, true, "individual", "default")
 
       Then("the intermediary company name is displayed on the dashboard")
       dashboard.checkJourneyUrl("your-account")
