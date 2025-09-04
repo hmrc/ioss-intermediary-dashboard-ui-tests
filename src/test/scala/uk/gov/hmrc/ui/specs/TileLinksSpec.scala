@@ -30,7 +30,7 @@ class TileLinksSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "default")
       dashboard.checkJourneyUrl("your-account")
 
       When("the intermediary clicks the 'Add a new client' link on the dashboard")
@@ -44,7 +44,7 @@ class TileLinksSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "default")
       dashboard.checkJourneyUrl("your-account")
 
       When("the intermediary clicks the Change your registration link")
@@ -58,7 +58,7 @@ class TileLinksSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "default")
       dashboard.checkJourneyUrl("your-account")
 
       When("the intermediary clicks the Leave this service link")

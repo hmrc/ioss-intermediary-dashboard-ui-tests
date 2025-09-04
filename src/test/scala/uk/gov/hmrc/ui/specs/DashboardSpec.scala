@@ -29,7 +29,7 @@ class DashboardSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "default")
       dashboard.checkJourneyUrl("your-account")
     }
   }

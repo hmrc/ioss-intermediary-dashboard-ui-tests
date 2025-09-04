@@ -30,7 +30,12 @@ object Auth extends BasePage {
   def goToAuthorityWizard(): Unit =
     get(authUrl)
 
-  def loginUsingAuthorityWizard(withIntEnrolment: Boolean, withVatEnrolment: Boolean, vrnType: String): Unit = {
+  def loginUsingAuthorityWizard(
+    withIntEnrolment: Boolean,
+    withVatEnrolment: Boolean,
+    vrnType: String,
+    intNumberType: String
+  ): Unit = {
 
     getCurrentUrl should startWith(authUrl)
 
@@ -52,9 +57,19 @@ object Auth extends BasePage {
       }
     }
     if (withIntEnrolment) {
-      sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-INT")
-      sendKeys(By.id("input-1-0-name"), "IntNumber")
-      sendKeys(By.id("input-1-0-value"), "IN2431234567")
+      if (intNumberType == "noPending") {
+        sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-INT")
+        sendKeys(By.id("input-1-0-name"), "IntNumber")
+        sendKeys(By.id("input-1-0-value"), "IN9001112224")
+      } else if (intNumberType == "onePending") {
+        sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-INT")
+        sendKeys(By.id("input-1-0-name"), "IntNumber")
+        sendKeys(By.id("input-1-0-value"), "IN9001112225")
+      } else {
+        sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-INT")
+        sendKeys(By.id("input-1-0-name"), "IntNumber")
+        sendKeys(By.id("input-1-0-value"), "IN9001112223")
+      }
     }
 
     click(By.cssSelector("Input[value='Submit']"))

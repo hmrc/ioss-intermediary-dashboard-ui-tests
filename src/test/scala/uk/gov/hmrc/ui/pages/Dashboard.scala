@@ -49,7 +49,10 @@ object Dashboard extends BasePage {
     } else {
       Assert.assertTrue(htmlBody.contains("first middle last"))
     }
-
   }
 
+  def clickBackButton(): Unit =
+    Driver.instance
+      .navigate()
+      .back()
 }

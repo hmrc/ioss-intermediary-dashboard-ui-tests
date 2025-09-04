@@ -29,7 +29,7 @@ class KickoutSpec extends BaseSpec {
 
       Given("a user who is not registered on the Intermediary service accesses the Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(false, true, "standard")
+      auth.loginUsingAuthorityWizard(false, true, "standard", "default")
 
       Then("the intermediary is on the cannot-use-this-service page")
       dashboard.checkJourneyUrl("cannot-use-this-service")
@@ -39,7 +39,7 @@ class KickoutSpec extends BaseSpec {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service without a VAT enrolment")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, false, "notRequired")
+      auth.loginUsingAuthorityWizard(true, false, "notRequired", "default")
 
       Then("the intermediary is shown the sorry there is a problem page")
       dashboard.checkProblemPage()
