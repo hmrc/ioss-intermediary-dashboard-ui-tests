@@ -35,7 +35,7 @@ object ViewRegistration extends BasePage {
 
   def activeClients(show: Boolean): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
-    val text = "Active clients"
+    val text     = "Active clients"
 
     if (show == true) {
       Assert.assertTrue(htmlBody.contains(text))
@@ -46,7 +46,7 @@ object ViewRegistration extends BasePage {
 
   def previousClients(show: Boolean): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
-    val text = "Previous clients that have left the service"
+    val text     = "Previous clients that have left the service"
 
     if (show == true) {
       Assert.assertTrue(htmlBody.contains(text))

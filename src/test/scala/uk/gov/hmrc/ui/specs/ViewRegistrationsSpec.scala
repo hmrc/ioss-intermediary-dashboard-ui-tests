@@ -22,10 +22,9 @@ class ViewRegistrationsSpec extends BaseSpec {
 
   private val dashboard           = Dashboard
   private val auth                = Auth
-  private val viewRegistration = ViewRegistration
+  private val viewRegistration    = ViewRegistration
   private val pendingRegistration = PendingRegistration
-  private val tileLinks = TileLinks
-
+  private val tileLinks           = TileLinks
 
   Feature("View and remove registration list") {
 
@@ -67,7 +66,7 @@ class ViewRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary is redirected to the amend journey within the registration service")
       //      Change your registration page not currently implemented
-      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144771")
+      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144774")
     }
 
     Scenario("Intermediary views client list with only active clients") {
@@ -85,13 +84,28 @@ class ViewRegistrationsSpec extends BaseSpec {
       viewRegistration.noActiveClients(false)
       viewRegistration.activeClients(true)
       viewRegistration.previousClients(false)
+
+      When("the intermediary clicks on the remove link for IM9001144881")
+      pendingRegistration.selectClientLink("start-journey\\/IM9001144881")
+
+      Then("the intermediary is redirected to the exclusions service")
+      tileLinks.checkNetpExclusionsJourneyUrl()
+
+      When("the intermediary navigates back to the client list and clicks on the client name for IM9001144882")
+      dashboard.clickBackButton()
+      dashboard.checkJourneyUrl("client-list")
+      pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144882")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      //      Change your registration page not currently implemented
+      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144882")
     }
 
     Scenario("Intermediary views client list with only previous clients") {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard", "onlyActiveRegistrations")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "onlyPreviousRegistrations")
       dashboard.checkJourneyUrl("your-account")
 
       When("the intermediary clicks the 'View, edit or remove a client' link on the dashboard")
@@ -102,6 +116,13 @@ class ViewRegistrationsSpec extends BaseSpec {
       viewRegistration.noActiveClients(true)
       viewRegistration.activeClients(false)
       viewRegistration.previousClients(true)
+
+      When("the intermediary clicks on the client name for IM9001144886")
+      pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144886")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      //      Change your registration page not currently implemented
+      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144886")
     }
 
     Scenario("Intermediary views client list with no active or previous clients") {
