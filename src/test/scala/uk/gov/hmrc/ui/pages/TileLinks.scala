@@ -35,6 +35,11 @@ object TileLinks extends BasePage {
   private val intermediaryExclusionsJourneyUrl: String =
     "/pay-clients-vat-on-eu-sales/leave-import-one-stop-shop-intermediary"
 
+  private val netpExclusionsUrl: String        =
+    TestEnvironment.url("ioss-netp-exclusions-frontend")
+  private val netpExclusionsJourneyUrl: String =
+    "/pay-clients-vat-on-eu-sales/leave-import-one-stop-shop-netp"
+
   def checkRegistrationJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl/$page")
 
@@ -43,5 +48,8 @@ object TileLinks extends BasePage {
 
   def checkIntermediaryExclusionsJourneyUrl(): Unit =
     getCurrentUrl should startWith(intermediaryExclusionsUrl + intermediaryExclusionsJourneyUrl)
+
+  def checkNetpExclusionsJourneyUrl(): Unit =
+    getCurrentUrl should startWith(netpExclusionsUrl + netpExclusionsJourneyUrl)
 
 }
