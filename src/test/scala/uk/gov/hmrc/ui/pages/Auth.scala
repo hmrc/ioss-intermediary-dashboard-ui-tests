@@ -71,6 +71,10 @@ object Auth extends BasePage {
         sendKeys(By.id("input-1-0-value"), "IN9008888886")
       } else if (intNumberType == "noRegistrations") {
         sendKeys(By.id("input-1-0-value"), "IN9008888888")
+      } else if (intNumberType == "excludedPast") {
+        sendKeys(By.id("input-1-0-value"), "IN9002323232")
+      } else if (intNumberType == "excludedFuture") {
+        sendKeys(By.id("input-1-0-value"), "IN9003232323")
       } else {
         sendKeys(By.id("input-1-0-value"), "IN9001112223")
       }

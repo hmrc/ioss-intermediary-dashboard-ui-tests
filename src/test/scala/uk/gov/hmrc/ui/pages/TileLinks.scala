@@ -16,8 +16,11 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.junit.Assert
+import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers.*
 import uk.gov.hmrc.configuration.TestEnvironment
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 object TileLinks extends BasePage {
 
@@ -46,10 +49,15 @@ object TileLinks extends BasePage {
   def checkIntermediaryRegistrationJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$intermediaryRegistrationUrl$intermediaryRegistrationJourneyUrl/$page")
 
-  def checkIntermediaryExclusionsJourneyUrl(): Unit =
-    getCurrentUrl should startWith(intermediaryExclusionsUrl + intermediaryExclusionsJourneyUrl)
+  def checkIntermediaryExclusionsJourneyUrl(page: String): Unit =
+    getCurrentUrl should startWith(s"$intermediaryExclusionsUrl$intermediaryExclusionsJourneyUrl/$page")
 
   def checkNetpExclusionsJourneyUrl(): Unit =
     getCurrentUrl should startWith(netpExclusionsUrl + netpExclusionsJourneyUrl)
+
+  def noLeaveThisServiceLink(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("Leave this service"))
+  }
 
 }
