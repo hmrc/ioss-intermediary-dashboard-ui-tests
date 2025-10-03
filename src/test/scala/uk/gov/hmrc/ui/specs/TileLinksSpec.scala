@@ -65,7 +65,34 @@ class TileLinksSpec extends BaseSpec {
       dashboard.clickLink("leave-scheme")
 
       Then("the intermediary is redirected to the Intermediary registration service")
-      tileLinks.checkIntermediaryExclusionsJourneyUrl()
+      tileLinks.checkIntermediaryExclusionsJourneyUrl("exclusions-moved-to-a-different-country")
+    }
+
+    Scenario("Intermediary who is already excluded does not have the 'Leave this service' link on their dashboard") {
+
+      Given("the excluded intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedPast")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Leave this service link is not displayed")
+      tileLinks.noLeaveThisServiceLink()
+    }
+
+    Scenario(
+      "Intermediary who has a future exclusions effective date has the 'Cancel your request to leave' link on their dashboard"
+    ) {
+
+      Given("the excluded intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedFuture")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the Cancel your request to leave link")
+      dashboard.clickLink("cancel-your-request-to-leave")
+
+      Then("the intermediary is redirected to the cancel-leave-scheme page on the Intermediary registration service")
+      tileLinks.checkIntermediaryExclusionsJourneyUrl("cancel-leave-scheme")
     }
   }
 }
