@@ -94,5 +94,21 @@ class TileLinksSpec extends BaseSpec {
       Then("the intermediary is redirected to the cancel-leave-scheme page on the Intermediary registration service")
       tileLinks.checkIntermediaryExclusionsJourneyUrl("cancel-leave-scheme")
     }
+
+    Scenario(
+      "Intermediary who has had an exclusion reversed can leave the service via the IOSS Intermediary Dashboard Service link"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "reversal")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the Leave this service link")
+      dashboard.clickLink("leave-scheme")
+
+      Then("the intermediary is redirected to the Intermediary registration service")
+      tileLinks.checkIntermediaryExclusionsJourneyUrl("exclusions-moved-to-a-different-country")
+    }
   }
 }
