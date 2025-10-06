@@ -21,6 +21,7 @@ import org.junit.Assert
 import uk.gov.hmrc.selenium.webdriver.Driver
 import org.scalatest.matchers.should.Matchers.*
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.ExpectedConditions
 
 object Dashboard extends BasePage {
 
@@ -32,9 +33,12 @@ object Dashboard extends BasePage {
     get(dashboardUrl + journeyUrl)
 
   def checkJourneyUrl(page: String): Unit =
-    getCurrentUrl should startWith(s"$dashboardUrl$journeyUrl/$page")
+    val url = s"$dashboardUrl$journeyUrl/$page"
+    fluentWait.until(ExpectedConditions.urlContains(url))
+    getCurrentUrl should startWith(url)
 
   def checkProblemPage(): Unit = {
+    fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
     val h1 = Driver.instance.findElement(By.tagName("h1")).getText
     Assert.assertTrue(h1.equals("Sorry, there is a problem with the service"))
   }
