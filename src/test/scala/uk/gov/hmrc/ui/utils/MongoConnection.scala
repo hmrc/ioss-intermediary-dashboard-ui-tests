@@ -48,7 +48,7 @@ object MongoConnection {
       case ex: Exception => println(s"Error inserting data into MongoDB: $ex")
     }
 
-  def dropRecord(db: String, collection: String, intermediaryNumber: String): Unit =
+  def dropPendingRegistrations(db: String, collection: String, intermediaryNumber: String): Unit =
     try
       Await.result(
         mongoClient
@@ -62,9 +62,26 @@ object MongoConnection {
       case e: Exception => println("Error: " + e)
     }
 
+  def dropSecureMessageRecords(db: String, collection: String): Unit =
+    try
+      Await.result(
+        mongoClient
+          .getDatabase(db)
+          .getCollection(collection)
+          .drop()
+          .head(),
+        timeout
+      )
+    catch {
+      case e: Exception => println("Error: " + e)
+    }
+
   def dropPendingRegistrations(): Unit = {
-    dropRecord("ioss-netp-registration", "pending-registration", "IN9001112223")
-    dropRecord("ioss-netp-registration", "pending-registration", "IN9001112224")
-    dropRecord("ioss-netp-registration", "pending-registration", "IN9001112225")
+    dropPendingRegistrations("ioss-netp-registration", "pending-registration", "IN9001112223")
+    dropPendingRegistrations("ioss-netp-registration", "pending-registration", "IN9001112224")
+    dropPendingRegistrations("ioss-netp-registration", "pending-registration", "IN9001112225")
   }
+
+  def dropSecureMessages(): Unit =
+    dropSecureMessageRecords("message", "secure-message")
 }
