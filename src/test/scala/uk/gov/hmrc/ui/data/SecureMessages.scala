@@ -24,7 +24,7 @@ object SecureMessages {
 
   val data: List[String] =
     List(
-     """
+      """
         |{
         |  "_id": {
         |    "$oid": "68e524f8e7ef516a478bd1e4"

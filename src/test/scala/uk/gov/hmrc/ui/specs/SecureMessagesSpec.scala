@@ -20,8 +20,8 @@ import uk.gov.hmrc.ui.pages.*
 
 class SecureMessagesSpec extends BaseSpec {
 
-  private val dashboard           = Dashboard
-  private val auth                = Auth
+  private val dashboard     = Dashboard
+  private val auth          = Auth
   private val secureMessage = SecureMessage
 
   Feature("Secure message journeys") {
