@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,8 +48,7 @@ class ViewRegistrationsSpec extends BaseSpec {
       pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144771")
 
       Then("the intermediary is redirected to the amend journey within the registration service")
-//      Change your registration page not currently implemented
-      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144771")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration?iossNumber=IM9001144771")
 
       When("the intermediary navigates back to the client list and clicks on the remove link for IM9001144773")
       dashboard.clickBackButton()
@@ -65,8 +64,7 @@ class ViewRegistrationsSpec extends BaseSpec {
       pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144774")
 
       Then("the intermediary is redirected to the amend journey within the registration service")
-      //      Change your registration page not currently implemented
-      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144774")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration?iossNumber=IM9001144774")
     }
 
     Scenario("Intermediary views client list with only active clients") {
@@ -97,8 +95,7 @@ class ViewRegistrationsSpec extends BaseSpec {
       pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144882")
 
       Then("the intermediary is redirected to the amend journey within the registration service")
-      //      Change your registration page not currently implemented
-      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144882")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration?iossNumber=IM9001144882")
     }
 
     Scenario("Intermediary views client list with only previous clients") {
@@ -121,8 +118,7 @@ class ViewRegistrationsSpec extends BaseSpec {
       pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144886")
 
       Then("the intermediary is redirected to the amend journey within the registration service")
-      //      Change your registration page not currently implemented
-      tileLinks.checkRegistrationJourneyUrl("start-amend-journey/IM9001144886")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration?iossNumber=IM9001144886")
     }
 
     Scenario("Intermediary views client list with no active or previous clients") {
