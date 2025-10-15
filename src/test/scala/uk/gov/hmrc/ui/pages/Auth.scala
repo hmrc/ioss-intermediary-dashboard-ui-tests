@@ -61,11 +61,11 @@ object Auth extends BasePage {
     if (withIntEnrolment) {
       sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-INT")
       sendKeys(By.id("input-1-0-name"), "IntNumber")
-      if (intNumberType == "noPending") {
+      if (intNumberType == "noPending" | intNumberType == "noUnreadSecureMessages") {
         sendKeys(By.id("input-1-0-value"), "IN9001112224")
       } else if (intNumberType == "onePending") {
         sendKeys(By.id("input-1-0-value"), "IN9001112225")
-      } else if (intNumberType == "multipleActiveAndPreviousRegistrations") {
+      } else if (intNumberType == "multipleActiveAndPreviousRegistrations" || intNumberType == "threeSecureMessages") {
         sendKeys(By.id("input-1-0-value"), "IN9001234567")
       } else if (intNumberType == "onlyActiveRegistrations") {
         sendKeys(By.id("input-1-0-value"), "IN9008888887")
@@ -79,6 +79,10 @@ object Auth extends BasePage {
         sendKeys(By.id("input-1-0-value"), "IN9003232323")
       } else if (intNumberType == "reversal") {
         sendKeys(By.id("input-1-0-value"), "IN9003233333")
+      } else if (intNumberType == "twoSecureMessages") {
+        sendKeys(By.id("input-1-0-value"), "IN9001234012")
+      } else if (intNumberType == "oneSecureMessage") {
+        sendKeys(By.id("input-1-0-value"), "IN9001234013")
       } else {
         sendKeys(By.id("input-1-0-value"), "IN9001112223")
       }
