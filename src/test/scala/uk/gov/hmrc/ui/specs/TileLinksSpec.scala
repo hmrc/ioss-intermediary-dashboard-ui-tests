@@ -117,7 +117,7 @@ class TileLinksSpec extends BaseSpec {
 
       Given("the excluded intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedPast")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedFuture")
       dashboard.checkJourneyUrl("your-account")
 
       Then("the Rejoin this service link is not displayed")
@@ -130,11 +130,17 @@ class TileLinksSpec extends BaseSpec {
 
       Given("the excluded intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
-      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedFuture")
+      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedPast")
       dashboard.checkJourneyUrl("your-account")
 
       Then("the Rejoin this service link is displayed")
       tileLinks.rejoinThisServiceLink(true)
+
+      When("the intermediary clicks the Rejoin this service link")
+      dashboard.clickLink("rejoin-scheme")
+
+      Then("the intermediary is redirected to the Intermediary registration service")
+      tileLinks.checkIntermediaryRegistrationJourneyUrl("rejoin-check-your-details")
     }
 
     Scenario(
@@ -161,6 +167,12 @@ class TileLinksSpec extends BaseSpec {
 
       Then("the Rejoin this service link is not displayed")
       tileLinks.rejoinThisServiceLink(true)
+
+      When("the intermediary clicks the Rejoin this service link")
+      dashboard.clickLink("rejoin-scheme")
+
+      Then("the intermediary is redirected to the Intermediary registration service")
+      tileLinks.checkIntermediaryRegistrationJourneyUrl("rejoin-check-your-details")
     }
 
     Scenario(
