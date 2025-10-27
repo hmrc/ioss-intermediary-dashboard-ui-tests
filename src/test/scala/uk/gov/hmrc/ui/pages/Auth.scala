@@ -48,48 +48,38 @@ object Auth extends BasePage {
     if (withVatEnrolment) {
       sendKeys(By.id("enrolment[0].name"), "HMRC-MTD-VAT")
       sendKeys(By.id("input-0-0-name"), "VRN")
-      if (vrnType == "notFound") {
-        sendKeys(By.id("input-0-0-value"), "900000001")
-      } else if (vrnType == "internalServerError") {
-        sendKeys(By.id("input-0-0-value"), "800000001")
-      } else if (vrnType == "individual") {
-        sendKeys(By.id("input-0-0-value"), "700000002")
-      } else {
-        sendKeys(By.id("input-0-0-value"), "100000001")
+      val vrn = vrnType match {
+        case "notFound"            => "900000001"
+        case "internalServerError" => "800000001"
+        case "individual"          => "700000002"
+        case _                     => "100000001"
       }
+      sendKeys(By.id("input-0-0-value"), vrn)
     }
+
     if (withIntEnrolment) {
       sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-INT")
       sendKeys(By.id("input-1-0-name"), "IntNumber")
-      if (intNumberType == "noPending" | intNumberType == "noUnreadSecureMessages") {
-        sendKeys(By.id("input-1-0-value"), "IN9001112224")
-      } else if (intNumberType == "onePending") {
-        sendKeys(By.id("input-1-0-value"), "IN9001112225")
-      } else if (intNumberType == "multipleActiveAndPreviousRegistrations" || intNumberType == "threeSecureMessages") {
-        sendKeys(By.id("input-1-0-value"), "IN9001234567")
-      } else if (intNumberType == "onlyActiveRegistrations") {
-        sendKeys(By.id("input-1-0-value"), "IN9008888887")
-      } else if (intNumberType == "onlyPreviousRegistrations") {
-        sendKeys(By.id("input-1-0-value"), "IN9008888886")
-      } else if (intNumberType == "noRegistrations") {
-        sendKeys(By.id("input-1-0-value"), "IN9008888888")
-      } else if (intNumberType == "excludedPast") {
-        sendKeys(By.id("input-1-0-value"), "IN9002323232")
-      } else if (intNumberType == "excludedFuture") {
-        sendKeys(By.id("input-1-0-value"), "IN9003232323")
-      } else if (intNumberType == "reversal") {
-        sendKeys(By.id("input-1-0-value"), "IN9003233333")
-      } else if (intNumberType == "twoSecureMessages") {
-        sendKeys(By.id("input-1-0-value"), "IN9001234012")
-      } else if (intNumberType == "oneSecureMessage") {
-        sendKeys(By.id("input-1-0-value"), "IN9001234013")
-      } else {
-        sendKeys(By.id("input-1-0-value"), "IN9001112223")
+
+      val intNumber = intNumberType match {
+        case "noPending" | "noUnreadSecureMessages"                           => "IN9001112224"
+        case "onePending"                                                     => "IN9001112225"
+        case "multipleActiveAndPreviousRegistrations" | "threeSecureMessages" => "IN9001234567"
+        case "onlyActiveRegistrations"                                        => "IN9008888887"
+        case "onlyPreviousRegistrations"                                      => "IN9008888886"
+        case "noRegistrations"                                                => "IN9008888888"
+        case "excludedPast"                                                   => "IN9002323232"
+        case "excludedFuture"                                                 => "IN9003232323"
+        case "reversal"                                                       => "IN9003233333"
+        case "twoSecureMessages"                                              => "IN9001234012"
+        case "oneSecureMessage"                                               => "IN9001234013"
+        case "quarantined"                                                    => "IN9002323334"
+        case "quarantineExpired"                                              => "IN9002323335"
+        case _                                                                => "IN9001112223"
       }
+      sendKeys(By.id("input-1-0-value"), intNumber)
     }
-
     click(By.cssSelector("Input[value='Submit']"))
-
   }
 
 }

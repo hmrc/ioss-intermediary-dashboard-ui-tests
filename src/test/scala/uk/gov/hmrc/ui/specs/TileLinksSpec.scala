@@ -110,5 +110,70 @@ class TileLinksSpec extends BaseSpec {
       Then("the intermediary is redirected to the Intermediary registration service")
       tileLinks.checkIntermediaryExclusionsJourneyUrl("exclusions-moved-to-a-different-country")
     }
+
+    Scenario(
+      "Intermediary who has an exclusion effective date in the future does not have access to the Rejoin this service link"
+    ) {
+
+      Given("the excluded intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedPast")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is not displayed")
+      tileLinks.rejoinThisServiceLink(false)
+    }
+
+    Scenario(
+      "Intermediary who has an exclusion effective date in the past but is not quarantined has access to the Rejoin this service link"
+    ) {
+
+      Given("the excluded intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "excludedFuture")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is displayed")
+      tileLinks.rejoinThisServiceLink(true)
+    }
+
+    Scenario(
+      "Intermediary who has an active quarantine does not have access to the Rejoin this service link"
+    ) {
+
+      Given("the quarantined intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "quarantined")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is not displayed")
+      tileLinks.rejoinThisServiceLink(false)
+    }
+
+    Scenario(
+      "Intermediary who has an expired quarantine has access to the Rejoin this service link"
+    ) {
+
+      Given("the intermediary with expired quarantine accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "quarantineExpired")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is not displayed")
+      tileLinks.rejoinThisServiceLink(true)
+    }
+
+    Scenario(
+      "Intermediary who has had an exclusion reversed does not have access to the Rejoin this service link"
+    ) {
+
+      Given("the quarantined intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "reversal")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is not displayed")
+      tileLinks.rejoinThisServiceLink(false)
+    }
   }
 }
