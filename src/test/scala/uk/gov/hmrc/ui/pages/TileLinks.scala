@@ -60,4 +60,14 @@ object TileLinks extends BasePage {
     Assert.assertFalse(htmlBody.contains("Leave this service"))
   }
 
+  def rejoinThisServiceLink(linkShown: Boolean): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    val linkText = "Rejoin this service"
+    if (linkShown) {
+      Assert.assertTrue(htmlBody.contains(linkText))
+    } else {
+      Assert.assertFalse(htmlBody.contains(linkText))
+    }
+  }
+
 }
