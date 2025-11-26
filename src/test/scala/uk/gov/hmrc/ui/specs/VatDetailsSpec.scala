@@ -22,6 +22,7 @@ class VatDetailsSpec extends BaseSpec {
 
   private val dashboard = Dashboard
   private val auth      = Auth
+  private val tileLinks = TileLinks
 
   Feature("Extra Vat Details journeys") {
 
@@ -71,6 +72,20 @@ class VatDetailsSpec extends BaseSpec {
       Then("the intermediary company name is displayed on the dashboard")
       dashboard.checkJourneyUrl("your-account")
       dashboard.checkName("individual")
+    }
+
+    Scenario(
+      "Intermediary is presented with the NI address intercept page if they no longer have an NI address in their vat info"
+    ) {
+
+      Given(
+        "the intermediary accesses the IOSS Intermediary Dashboard Service where VAT info contains a non-NI postcode"
+      )
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "nonNiAddress", "default")
+
+      Then("the intermediary is shown the NI Address intercept page on the Intermediary Registration service")
+      tileLinks.checkIntermediaryRegistrationJourneyUrl("has-business-address-in-ni?waypoints=change-your-registration")
     }
   }
 }

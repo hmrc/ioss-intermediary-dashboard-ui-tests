@@ -52,6 +52,7 @@ object Auth extends BasePage {
         case "notFound"            => "900000001"
         case "internalServerError" => "800000001"
         case "individual"          => "700000002"
+        case "nonNiAddress"        => "700000003"
         case _                     => "100000001"
       }
       sendKeys(By.id("input-0-0-value"), vrn)
