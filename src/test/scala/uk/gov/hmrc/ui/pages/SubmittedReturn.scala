@@ -43,15 +43,4 @@ object SubmittedReturn extends BasePage {
       Assert.assertFalse(htmlBody.contains(text))
     }
   }
-
-  def previousClients(show: Boolean): Unit = {
-    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
-    val text     = "Previous clients that have left the service"
-
-    if (show == true) {
-      Assert.assertTrue(htmlBody.contains(text))
-    } else {
-      Assert.assertFalse(htmlBody.contains(text))
-    }
-  }
 }
