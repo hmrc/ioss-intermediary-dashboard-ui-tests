@@ -20,13 +20,16 @@ import uk.gov.hmrc.ui.pages.*
 
 class SubmittedReturnsSpec extends BaseSpec {
 
-  private val dashboard           = Dashboard
-  private val auth                = Auth
-  private val viewRegistration    = ViewRegistration
+  private val dashboard        = Dashboard
+  private val auth             = Auth
+  private val viewRegistration = ViewRegistration
+  private val submittedReturn  = SubmittedReturn
 
   Feature("View clients submitted returns list") {
 
-    Scenario("Intermediary views submitted returns list where they have multiple active clients and multiple previous clients") {
+    Scenario(
+      "Intermediary views submitted returns list where they have multiple active clients and multiple previous clients"
+    ) {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
@@ -36,8 +39,12 @@ class SubmittedReturnsSpec extends BaseSpec {
       When("the intermediary clicks the 'View submitted returns' link on the dashboard")
       dashboard.clickLink("view-return")
 
-      Then("the intermediary is shown their client's submitted returns list with multiple active clients and multiple previous clients")
+      Then(
+        "the intermediary is shown their client's submitted returns list with multiple active clients and multiple previous clients"
+      )
       dashboard.checkJourneyUrl("client-returns-list")
+//      submittedReturn.noReturnsSubmitted(false)
+//      submittedReturn.showInset(true)
       viewRegistration.activeClients(true)
       viewRegistration.previousClients(true)
     }
@@ -52,8 +59,12 @@ class SubmittedReturnsSpec extends BaseSpec {
       When("the intermediary clicks the 'View submitted returns' link on the dashboard")
       dashboard.clickLink("view-return")
 
-      Then("the intermediary is shown their client's submitted returns list with only active clients and no previous clients")
+      Then(
+        "the intermediary is shown their client's submitted returns list with only active clients and no previous clients"
+      )
       dashboard.checkJourneyUrl("client-returns-list")
+//      submittedReturn.noReturnsSubmitted(false)
+//      submittedReturn.showInset(true)
       viewRegistration.activeClients(true)
       viewRegistration.previousClients(false)
     }
@@ -68,8 +79,12 @@ class SubmittedReturnsSpec extends BaseSpec {
       When("the intermediary clicks the 'View submitted returns' link on the dashboard")
       dashboard.clickLink("view-return")
 
-      Then("the intermediary is shown their client's submitted returns list with only previous clients and no active clients")
+      Then(
+        "the intermediary is shown their client's submitted returns list with only previous clients and no active clients"
+      )
       dashboard.checkJourneyUrl("client-returns-list")
+//      submittedReturn.noReturnsSubmitted(false)
+//      submittedReturn.showInset(true)
       viewRegistration.activeClients(false)
       viewRegistration.previousClients(true)
     }
@@ -84,14 +99,19 @@ class SubmittedReturnsSpec extends BaseSpec {
       When("the intermediary clicks the 'View submitted returns' link on the dashboard")
       dashboard.clickLink("view-return")
 
-      Then("the intermediary is shown their client's submitted returns list with no active clients and no previous clients")
+      Then(
+        "the intermediary is shown their client's submitted returns list with no active clients and no previous clients"
+      )
       dashboard.checkJourneyUrl("client-returns-list")
+//      submittedReturn.noReturnsSubmitted(true)
+//      submittedReturn.showInset(false)
       viewRegistration.activeClients(false)
       viewRegistration.previousClients(false)
     }
 
 //    Following further development, will also need to add further steps/scenarios to check:
 //    Clients who do not have any submitted returns are not on the list
+//    Need to alter noReturnsSubmitted and inset checks to be accurate
 //    Click through to view returns, single, multiple, over multiple years etc
 //    Viewing returns from previous IOSS registrations
   }
