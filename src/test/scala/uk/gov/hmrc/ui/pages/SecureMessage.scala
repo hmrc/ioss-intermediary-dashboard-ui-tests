@@ -32,4 +32,12 @@ object SecureMessage extends BasePage {
       Assert.assertTrue(htmlBody.contains("View your secure messages"))
     }
   }
+
+  def selectSecureMessage(link: String): Unit =
+    click(By.cssSelector(s"a[href*=$link]"))
+
+  def checkSecureMessagesHeading(heading: String): Unit = {
+    val heading = Driver.instance.findElement(By.tagName("h2")).getText
+    Assert.assertTrue(heading.equals(heading))
+  }
 }

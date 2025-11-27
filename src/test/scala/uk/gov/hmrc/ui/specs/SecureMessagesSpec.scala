@@ -41,6 +41,23 @@ class SecureMessagesSpec extends BaseSpec {
 
       Then("the secure-messages page is displayed")
       dashboard.checkJourneyUrl("secure-messages")
+
+      And("the intermediary clicks on their first unread message")
+      secureMessage.selectSecureMessage("individual-secure-message\\/69271ca31649fd80102e005c")
+
+      And("the intermediary is viewing their first message")
+      dashboard.checkJourneyUrl("individual-secure-message/69271ca31649fd80102e005c")
+      secureMessage.checkSecureMessagesHeading("Your IOSS VAT Return for Trick Trouse is late")
+
+      When("the intermediary clicks back")
+      dashboard.clickBackButton()
+
+      Then("the intermediary clicks on their next unread message")
+      secureMessage.selectSecureMessage("individual-secure-message\\/692719481649fd80102e005a")
+
+      And("the intermediary is viewing their second message")
+      dashboard.checkJourneyUrl("individual-secure-message/692719481649fd80102e005a")
+      secureMessage.checkSecureMessagesHeading("We have removed your client from the VAT IOSS scheme")
     }
 
     Scenario("Intermediary has one unread secure message") {
@@ -58,6 +75,13 @@ class SecureMessagesSpec extends BaseSpec {
 
       Then("the secure-messages page is displayed")
       dashboard.checkJourneyUrl("secure-messages")
+
+      When("the intermediary clicks on their unread message")
+      secureMessage.selectSecureMessage("individual-secure-message\\/69271d701649fd80102e005d")
+
+      Then("the intermediary can read their message")
+      dashboard.checkJourneyUrl("individual-secure-message/69271d701649fd80102e005d")
+      secureMessage.checkSecureMessagesHeading("We have removed your client from the VAT IOSS scheme")
     }
 
     Scenario("Intermediary has no unread secure messages") {
@@ -92,6 +116,33 @@ class SecureMessagesSpec extends BaseSpec {
 
       Then("the secure-messages page is displayed")
       dashboard.checkJourneyUrl("secure-messages")
+
+      And("the intermediary clicks on their first unread message")
+      secureMessage.selectSecureMessage("individual-secure-message\\/69271e301649fd80102e0060")
+
+      And("the intermediary is viewing their first message")
+      dashboard.checkJourneyUrl("individual-secure-message/69271e301649fd80102e0060")
+      secureMessage.checkSecureMessagesHeading("Your IOSS VAT Return for Trick Trouse is late")
+
+      When("the intermediary clicks back")
+      dashboard.clickBackButton()
+
+      Then("the intermediary clicks on their next unread message")
+      secureMessage.selectSecureMessage("individual-secure-message\\/69271e121649fd80102e005f")
+
+      And("the intermediary is viewing their second message")
+      dashboard.checkJourneyUrl("individual-secure-message/69271e121649fd80102e005f")
+      secureMessage.checkSecureMessagesHeading("We have removed your client from the VAT IOSS scheme")
+
+      When("the intermediary clicks back")
+      dashboard.clickBackButton()
+
+      Then("the intermediary clicks on their first read message")
+      secureMessage.selectSecureMessage("individual-secure-message\\/69271e481649fd80102e0061")
+
+      And("the intermediary is viewing their first read message")
+      dashboard.checkJourneyUrl("individual-secure-message/69271e481649fd80102e0061")
+      secureMessage.checkSecureMessagesHeading("Your IOSS VAT Return for Another Client is late")
     }
   }
 }

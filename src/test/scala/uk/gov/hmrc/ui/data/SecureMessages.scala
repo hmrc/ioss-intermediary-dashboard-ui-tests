@@ -27,10 +27,10 @@ object SecureMessages {
       """
         |{
         |  "_id": {
-        |    "$oid": "68e524f8e7ef516a478bd1e4"
+        |    "$oid": "692719481649fd80102e005a"
         |  },
         |  "externalRef": {
-        |    "id": "AJD228705357190404836",
+        |    "id": "AJD170707775830740958",
         |    "source": "gmc"
         |  },
         |  "recipient": {
@@ -39,51 +39,51 @@ object SecureMessages {
         |      "name": "HMRC-IOSS-INT",
         |      "value": "IN9001234012"
         |    },
-        |    "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk"
+        |    "email": "test@test.com"
         |  },
         |  "messageType": "mailout-batch",
         |  "validFrom": {
-        |    "$date": "2025-08-01T00:00:00.000Z"
+        |    "$date": "2025-11-26T00:00:00.000Z"
         |  },
         |  "content": [
         |    {
         |      "lang": "en",
-        |      "subject": "Import One Stop Shop (IOSS)",
-        |      "body": "281608923591592017"
+        |      "subject": "We have removed your client from the VAT IOSS scheme",
+        |      "body": "PHAgY2xhc3M9ImdvdnVrLWJvZHkiPlRyaWNrZXkgVHJvdXNlIElPU1MgbnVtYmVyIElNMTExMTExMTExMSBpcyBubyBsb25nZXIgZWxpZ2libGUgdG8gdXNlIHRoZSBWQVQgSW1wb3J0IE9uZSBTdG9wIFNob3AgKElPU1MpIHNjaGVtZS48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+WW91IG11c3QgY29tcGxldGUgYW55IG9mIHRoZWlyIG91dHN0YW5kaW5nIElPU1MgVkFUIFJldHVybnMgYW5kIGEgZmluYWwgcmV0dXJuIGZvciBKYW51YXJ5IDIwMjQuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPklmIHlvdSBiZWxpZXZlIHRoaXMgaXMgYW4gZXJyb3IsIGNvbnRhY3QgdXMgYXQgPGEgaHJlZj1tYWlsdG86IlZBVE9TUy5Db250YWN0QGhtcmMuZ292LnVrIiBjbGFzcz0iZ292dWstbGluayI+VkFUT1NTLkNvbnRhY3RAaG1yYy5nb3YudWs8L2E+IGFuZCBxdW90ZSB5b3VyIElPU1MgaW50ZXJtZWRpYXJ5IG51bWJlci48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+WW91ciBJT1NTIGludGVybWVkaWFyeSBudW1iZXIgaXM6IElNMTExMTExMTExMTwvcD4="
         |    }
         |  ],
         |  "alertDetails": {
         |    "templateId": "new_message_alert_ioss_netp",
         |    "recipientName": {
-        |      "line1": "Bob",
-        |      "line2": "Jones"
+        |      "line1": "Test",
+        |      "line2": "Test"
         |    },
         |    "data": {
-        |      "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |      "issueDate": "2025-08-01",
+        |      "email": "test@test.com",
+        |      "issueDate": "2025-11-26",
         |      "language": "en",
-        |      "subject": "Import One Stop Shop (IOSS)"
+        |      "subject": "We have removed your client from the VAT IOSS scheme"
         |    }
         |  },
         |  "details": {
         |    "formId": "M08aGIOSS",
         |    "sourceData": "test-source-data",
-        |    "batchId": "IOSSMessage",
-        |    "issueDate": "2025-08-01"
+        |    "batchId": "IOSSMessage"
         |  },
-        |  "emailAddress": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |  "hash": "JF7RReRmnD+POsOeTGnSiK1zYOm8t2QcKoEra6nSt1w=",
+        |  "emailAddress": "test@test.com",
+        |  "hash": "sKFqHpkFf62xA/qPHH9WIEcgDAP6xNAs8QfBzjN00pc=",
         |  "status": "deferred",
         |  "verificationBrake": false
         |}
+        |
          |""".stripMargin,
       """
         |{
         |  "_id": {
-        |    "$oid": "68e52553e7ef516a478bd1e5"
+        |    "$oid": "69271ca31649fd80102e005c"
         |  },
         |  "externalRef": {
-        |    "id": "AJD158251913719425968",
+        |    "id": "AJD608632864729486668",
         |    "source": "gmc"
         |  },
         |  "recipient": {
@@ -92,51 +92,51 @@ object SecureMessages {
         |      "name": "HMRC-IOSS-INT",
         |      "value": "IN9001234012"
         |    },
-        |    "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk"
+        |    "email": "test@test.com"
         |  },
         |  "messageType": "mailout-batch",
         |  "validFrom": {
-        |    "$date": "2025-08-01T00:00:00.000Z"
+        |    "$date": "2025-11-26T00:00:00.000Z"
         |  },
         |  "content": [
         |    {
         |      "lang": "en",
-        |      "subject": "Import One Stop Shop (IOSS)",
-        |      "body": "946380840376679184"
+        |      "subject": "Your IOSS VAT Return for Trick Trouse is late",
+        |      "body": "PHAgY2xhc3M9ImdvdnVrLWJvZHkiPldlIGhhdmUgbm90IHJlY2VpdmVkIHlvdXIgSmFudWFyeSAyMDI0IEltcG9ydCBPbmUgU3RvcCBTaG9wIChJT1NTKSBWQVQgUmV0dXJuIGZvciBUcmljayBUcm91c2UgKElPU1MgbnVtYmVyOiBJTTExMTExMTExMTEpLiBUaGlzIHdhcyBkdWUgYnnigK8yOSBKYW51YXJ5IDIwMjQuIDwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3UgbXVzdCBzdWJtaXQgcmV0dXJucyBieSB0aGUgZHVlIGRhdGUsIGV2ZW4gaWYgeW91ciBjbGllbnQgZGlkIG5vdCBtYWtlIGFueSBzYWxlcyB0aGF0IG1vbnRoLjwvcD7igK8NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3UgaGF2ZSAxMCBkYXlzIGZyb20gdGhpcyByZW1pbmRlciB0byBzdWJtaXQgYW55IG91dHN0YW5kaW5nIHJldHVybnMuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPklmIHlvdSBtaXNzIHRoaXMgZGVhZGxpbmUsIHdlIG1heSByZW1vdmUgeW91IGZyb20gdGhlIElPU1Mgc2NoZW1lLjwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3UgbWF5IGFsc28gYmUgY2hhcmdlZCBpbnRlcmVzdCBvciBwZW5hbHRpZXMgZm9yIG5vdCBkZWNsYXJpbmcgYW5kIHBheWluZyBWQVQgZHVlLjwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5JZiB5b3UgYmVsaWV2ZSB0aGF0IHlvdeKAmXZlIGFscmVhZHkgc3VibWl0dGVkIGFsbCB5b3VyIHJldHVybnMsIGNvbnRhY3QgPGEgaHJlZj1tYWlsdG86IlZBVE9TUy5Db250YWN0QGhtcmMuZ292LnVrIiBjbGFzcz0iZ292dWstbGluayI+VkFUT1NTLkNvbnRhY3RAaG1yYy5nb3YudWs8L2E+IGFuZCBxdW90ZSB5b3VyIElPU1MgaW50ZXJtZWRpYXJ5IG51bWJlci4NCjwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3VyIGludGVybWVkaWFyeSBudW1iZXIgaXM6IElNMTExMTExMTExMSA8L3A+"
         |    }
         |  ],
         |  "alertDetails": {
         |    "templateId": "new_message_alert_ioss_netp",
         |    "recipientName": {
-        |      "line1": "Bob",
-        |      "line2": "Jones"
+        |      "line1": "Test",
+        |      "line2": "Test"
         |    },
         |    "data": {
-        |      "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |      "issueDate": "2025-08-01",
+        |      "email": "test@test.com",
+        |      "issueDate": "2025-11-26",
         |      "language": "en",
-        |      "subject": "Import One Stop Shop (IOSS)"
+        |      "subject": "Your IOSS VAT Return for Trick Trouse is late"
         |    }
         |  },
         |  "details": {
         |    "formId": "M08aGIOSS",
         |    "sourceData": "test-source-data",
-        |    "batchId": "IOSSMessage",
-        |    "issueDate": "2025-08-01"
+        |    "batchId": "IOSSMessage"
         |  },
-        |  "emailAddress": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |  "hash": "KA/sOJMYlhwTEZ9fwumq1NKVgB9/Wsk4H/ss4gu/3zg=",
+        |  "emailAddress": "test@test.com",
+        |  "hash": "NtylfVMh9WabAjSjOJAVXXmn0nfTRyqc+DqNqoOCDmA=",
         |  "status": "deferred",
         |  "verificationBrake": false
         |}
+        |
         |""".stripMargin,
       """
         |{
         |  "_id": {
-        |    "$oid": "68e8de87e7ef516a478bd1e6"
+        |    "$oid": "69271d701649fd80102e005d"
         |  },
         |  "externalRef": {
-        |    "id": "AJD761952280045704241",
+        |    "id": "AJD836877862588817401",
         |    "source": "gmc"
         |  },
         |  "recipient": {
@@ -145,40 +145,39 @@ object SecureMessages {
         |      "name": "HMRC-IOSS-INT",
         |      "value": "IN9001234013"
         |    },
-        |    "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk"
+        |    "email": "test@test.com"
         |  },
         |  "messageType": "mailout-batch",
         |  "validFrom": {
-        |    "$date": "2025-08-01T00:00:00.000Z"
+        |    "$date": "2025-11-26T00:00:00.000Z"
         |  },
         |  "content": [
         |    {
         |      "lang": "en",
-        |      "subject": "Import One Stop Shop (IOSS)",
-        |      "body": "687080728092811347"
+        |      "subject": "We have removed your client from the VAT IOSS scheme",
+        |      "body": "PHAgY2xhc3M9ImdvdnVrLWJvZHkiPllvdSB0b2xkIHVzIHlvdSB3YW50IHRvIHJlbW92ZSBUcmlja2V5IFRyb3VzZSAoSU9TUyBudW1iZXIgSU0xMTExMTExMTExKSBmcm9tIHRoZSBWQVQgSW1wb3J0IE9uZSBTdG9wIFNob3AgKElPU1MpIHNjaGVtZS48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+WW91IG11c3QgY29tcGxldGUgYW55IG9mIHRoZWlyIG91dHN0YW5kaW5nIElPU1MgVkFUIFJldHVybnMgYW5kIGEgZmluYWwgcmV0dXJuIGZvciBKYW51YXJ5IDIwMjQuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPklmIHlvdSBiZWxpZXZlIHRoaXMgaXMgYW4gZXJyb3IsIGNvbnRhY3QgdXMgYXQgPGEgaHJlZj1tYWlsdG86IlZBVE9TUy5Db250YWN0QGhtcmMuZ292LnVrIiBjbGFzcz0iZ292dWstbGluayI+VkFUT1NTLkNvbnRhY3RAaG1yYy5nb3YudWs8L2E+IGFuZCBxdW90ZSB5b3VyIElPU1MgaW50ZXJtZWRpYXJ5IG51bWJlci48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+WW91ciBJT1NTIGludGVybWVkaWFyeSBudW1iZXIgaXM6IElNMTExMTExMTExMTwvcD4="
         |    }
         |  ],
         |  "alertDetails": {
         |    "templateId": "new_message_alert_ioss_netp",
         |    "recipientName": {
-        |      "line1": "Bob",
-        |      "line2": "Jones"
+        |      "line1": "Test",
+        |      "line2": "Test"
         |    },
         |    "data": {
-        |      "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |      "issueDate": "2025-08-01",
+        |      "email": "test@test.com",
+        |      "issueDate": "2025-11-26",
         |      "language": "en",
-        |      "subject": "Import One Stop Shop (IOSS)"
+        |      "subject": "We have removed your client from the VAT IOSS scheme"
         |    }
         |  },
         |  "details": {
         |    "formId": "M08aGIOSS",
         |    "sourceData": "test-source-data",
-        |    "batchId": "IOSSMessage",
-        |    "issueDate": "2025-08-01"
+        |    "batchId": "IOSSMessage"
         |  },
-        |  "emailAddress": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |  "hash": "TCVpAgSf4Yc9C7kTkN6jfYKQJ2erFJoSxdVYPewItQo=",
+        |  "emailAddress": "test@test.com",
+        |  "hash": "zd4LuNEuOByoT5rLCccykuLseK/Bh6+T2f4pq9LJJ+c=",
         |  "status": "deferred",
         |  "verificationBrake": false
         |}
@@ -186,10 +185,10 @@ object SecureMessages {
       """
         |{
         |  "_id": {
-        |    "$oid": "68e8e1cce7ef516a478bd1e7"
+        |    "$oid": "69271e121649fd80102e005f"
         |  },
         |  "externalRef": {
-        |    "id": "AJD734185423270523504",
+        |    "id": "AJD673516232506833969",
         |    "source": "gmc"
         |  },
         |  "recipient": {
@@ -198,40 +197,39 @@ object SecureMessages {
         |      "name": "HMRC-IOSS-INT",
         |      "value": "IN9001234567"
         |    },
-        |    "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk"
+        |    "email": "test@test.com"
         |  },
         |  "messageType": "mailout-batch",
         |  "validFrom": {
-        |    "$date": "2025-08-01T00:00:00.000Z"
+        |    "$date": "2025-11-26T00:00:00.000Z"
         |  },
         |  "content": [
         |    {
         |      "lang": "en",
-        |      "subject": "Import One Stop Shop (IOSS)",
-        |      "body": "942508840449861653"
+        |      "subject": "We have removed your client from the VAT IOSS scheme",
+        |      "body": "PHAgY2xhc3M9ImdvdnVrLWJvZHkiPllvdSB0b2xkIHVzIHlvdSB3YW50IHRvIHJlbW92ZSBUcmlja2V5IFRyb3VzZSAoSU9TUyBudW1iZXIgSU0xMTExMTExMTExKSBmcm9tIHRoZSBWQVQgSW1wb3J0IE9uZSBTdG9wIFNob3AgKElPU1MpIHNjaGVtZS48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+WW91IG11c3QgY29tcGxldGUgYW55IG9mIHRoZWlyIG91dHN0YW5kaW5nIElPU1MgVkFUIFJldHVybnMgYW5kIGEgZmluYWwgcmV0dXJuIGZvciBKYW51YXJ5IDIwMjQuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPklmIHlvdSBiZWxpZXZlIHRoaXMgaXMgYW4gZXJyb3IsIGNvbnRhY3QgdXMgYXQgPGEgaHJlZj1tYWlsdG86IlZBVE9TUy5Db250YWN0QGhtcmMuZ292LnVrIiBjbGFzcz0iZ292dWstbGluayI+VkFUT1NTLkNvbnRhY3RAaG1yYy5nb3YudWs8L2E+IGFuZCBxdW90ZSB5b3VyIElPU1MgaW50ZXJtZWRpYXJ5IG51bWJlci48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+WW91ciBJT1NTIGludGVybWVkaWFyeSBudW1iZXIgaXM6IElNMTExMTExMTExMTwvcD4="
         |    }
         |  ],
         |  "alertDetails": {
         |    "templateId": "new_message_alert_ioss_netp",
         |    "recipientName": {
-        |      "line1": "Bob",
-        |      "line2": "Jones"
+        |      "line1": "Test",
+        |      "line2": "Test"
         |    },
         |    "data": {
-        |      "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |      "issueDate": "2025-08-01",
+        |      "email": "test@test.com",
+        |      "issueDate": "2025-11-26",
         |      "language": "en",
-        |      "subject": "Import One Stop Shop (IOSS)"
+        |      "subject": "We have removed your client from the VAT IOSS scheme"
         |    }
         |  },
         |  "details": {
         |    "formId": "M08aGIOSS",
         |    "sourceData": "test-source-data",
-        |    "batchId": "IOSSMessage",
-        |    "issueDate": "2025-08-01"
+        |    "batchId": "IOSSMessage"
         |  },
-        |  "emailAddress": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |  "hash": "yCQKvlJXseCjM4a9TR3txbQR7C7yhaRQ2an8lyh3Ucc=",
+        |  "emailAddress": "test@test.com",
+        |  "hash": "QXK84NYORnnSWWpyyZDoiHstP+ywRhevvyFZwr76/NI=",
         |  "status": "deferred",
         |  "verificationBrake": false
         |}
@@ -239,10 +237,10 @@ object SecureMessages {
       """
         |{
         |  "_id": {
-        |    "$oid": "68e8e1cee7ef516a478bd1e8"
+        |    "$oid": "69271e301649fd80102e0060"
         |  },
         |  "externalRef": {
-        |    "id": "AJD814074561717750106",
+        |    "id": "AJD858421808596462907",
         |    "source": "gmc"
         |  },
         |  "recipient": {
@@ -251,51 +249,50 @@ object SecureMessages {
         |      "name": "HMRC-IOSS-INT",
         |      "value": "IN9001234567"
         |    },
-        |    "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk"
+        |    "email": "test@test.com"
         |  },
         |  "messageType": "mailout-batch",
         |  "validFrom": {
-        |    "$date": "2025-08-01T00:00:00.000Z"
+        |    "$date": "2025-11-26T00:00:00.000Z"
         |  },
         |  "content": [
         |    {
         |      "lang": "en",
-        |      "subject": "Import One Stop Shop (IOSS)",
-        |      "body": "385238625928855044"
+        |      "subject": "Your IOSS VAT Return for Trick Trouse is late",
+        |      "body": "PHAgY2xhc3M9ImdvdnVrLWJvZHkiPldlIGhhdmUgbm90IHJlY2VpdmVkIHlvdXIgSmFudWFyeSAyMDI0IEltcG9ydCBPbmUgU3RvcCBTaG9wIChJT1NTKSBWQVQgUmV0dXJuIGZvciBUcmljayBUcm91c2UgKElPU1MgbnVtYmVyOiBJTTExMTExMTExMTEpLiBUaGlzIHdhcyBkdWUgYnnigK8yOSBKYW51YXJ5IDIwMjQuIDwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3UgbXVzdCBzdWJtaXQgcmV0dXJucyBieSB0aGUgZHVlIGRhdGUsIGV2ZW4gaWYgeW91ciBjbGllbnQgZGlkIG5vdCBtYWtlIGFueSBzYWxlcyB0aGF0IG1vbnRoLjwvcD7igK8NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3UgaGF2ZSAxMCBkYXlzIGZyb20gdGhpcyByZW1pbmRlciB0byBzdWJtaXQgYW55IG91dHN0YW5kaW5nIHJldHVybnMuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPklmIHlvdSBtaXNzIHRoaXMgZGVhZGxpbmUsIHdlIG1heSByZW1vdmUgeW91IGZyb20gdGhlIElPU1Mgc2NoZW1lLjwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3UgbWF5IGFsc28gYmUgY2hhcmdlZCBpbnRlcmVzdCBvciBwZW5hbHRpZXMgZm9yIG5vdCBkZWNsYXJpbmcgYW5kIHBheWluZyBWQVQgZHVlLjwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5JZiB5b3UgYmVsaWV2ZSB0aGF0IHlvdeKAmXZlIGFscmVhZHkgc3VibWl0dGVkIGFsbCB5b3VyIHJldHVybnMsIGNvbnRhY3QgPGEgaHJlZj1tYWlsdG86IlZBVE9TUy5Db250YWN0QGhtcmMuZ292LnVrIiBjbGFzcz0iZ292dWstbGluayI+VkFUT1NTLkNvbnRhY3RAaG1yYy5nb3YudWs8L2E+IGFuZCBxdW90ZSB5b3VyIElPU1MgaW50ZXJtZWRpYXJ5IG51bWJlci4NCjwvcD4NCjxwIGNsYXNzPSJnb3Z1ay1ib2R5Ij5Zb3VyIGludGVybWVkaWFyeSBudW1iZXIgaXM6IElNMTExMTExMTExMSA8L3A+"
         |    }
         |  ],
         |  "alertDetails": {
         |    "templateId": "new_message_alert_ioss_netp",
         |    "recipientName": {
-        |      "line1": "Bob",
-        |      "line2": "Jones"
+        |      "line1": "Test",
+        |      "line2": "Test"
         |    },
         |    "data": {
-        |      "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |      "issueDate": "2025-08-01",
+        |      "email": "test@test.com",
+        |      "issueDate": "2025-11-26",
         |      "language": "en",
-        |      "subject": "Import One Stop Shop (IOSS)"
+        |      "subject": "Your IOSS VAT Return for Trick Trouse is late"
         |    }
         |  },
         |  "details": {
         |    "formId": "M08aGIOSS",
         |    "sourceData": "test-source-data",
-        |    "batchId": "IOSSMessage",
-        |    "issueDate": "2025-08-01"
+        |    "batchId": "IOSSMessage"
         |  },
-        |  "emailAddress": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |  "hash": "Leov7d/d6ygNrBReEor3Eob+p91alZVKjynxuN/ak7s=",
+        |  "emailAddress": "test@test.com",
+        |  "hash": "QazJLpS+SW5Pj1/b6GLhUgA0Y2UGQV85UQCIZO3qfvE=",
         |  "status": "deferred",
         |  "verificationBrake": false
         |}
         |""".stripMargin,
       """
-        |{
+       {
         |  "_id": {
-        |    "$oid": "68e8e1d0e7ef516a478bd1e9"
+        |    "$oid": "69271e481649fd80102e0061"
         |  },
         |  "externalRef": {
-        |    "id": "AJD143155473258250554",
+        |    "id": "AJD573311280816648316",
         |    "source": "gmc"
         |  },
         |  "recipient": {
@@ -304,44 +301,43 @@ object SecureMessages {
         |      "name": "HMRC-IOSS-INT",
         |      "value": "IN9001234567"
         |    },
-        |    "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk"
+        |    "email": "test@test.com"
         |  },
         |  "messageType": "mailout-batch",
         |  "validFrom": {
-        |    "$date": "2025-08-01T00:00:00.000Z"
+        |    "$date": "2025-11-26T00:00:00.000Z"
         |  },
         |  "content": [
         |    {
         |      "lang": "en",
-        |      "subject": "Import One Stop Shop (IOSS)",
-        |      "body": "886945229198734220"
+        |      "subject": "Your IOSS VAT Return for Another Client is late",
+        |      "body": "PHAgY2xhc3M9ImdvdnVrLWJvZHkiPldlIGhhdmUgbm90IHJlY2VpdmVkIHlvdXIgSmFudWFyeSAyMDI0IEltcG9ydCBPbmUgU3RvcCBTaG9wIChJT1NTKSBWQVQgUmV0dXJuIGZvciBBbm90aGVyIENsaWVudCAoSU9TUyBudW1iZXI6IElNMTExMTExMTExMikuIFRoaXMgd2FzIGR1ZSBieeKArzI5IEphbnVhcnkgMjAyNC4gPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPllvdSBtdXN0IHN1Ym1pdCByZXR1cm5zIGJ5IHRoZSBkdWUgZGF0ZSwgZXZlbiBpZiB5b3VyIGNsaWVudCBkaWQgbm90IG1ha2UgYW55IHNhbGVzIHRoYXQgbW9udGguPC9wPuKArw0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPllvdSBoYXZlIDEwIGRheXMgZnJvbSB0aGlzIHJlbWluZGVyIHRvIHN1Ym1pdCBhbnkgb3V0c3RhbmRpbmcgcmV0dXJucy48L3A+DQo8cCBjbGFzcz0iZ292dWstYm9keSI+SWYgeW91IG1pc3MgdGhpcyBkZWFkbGluZSwgd2UgbWF5IHJlbW92ZSB5b3UgZnJvbSB0aGUgSU9TUyBzY2hlbWUuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPllvdSBtYXkgYWxzbyBiZSBjaGFyZ2VkIGludGVyZXN0IG9yIHBlbmFsdGllcyBmb3Igbm90IGRlY2xhcmluZyBhbmQgcGF5aW5nIFZBVCBkdWUuPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPklmIHlvdSBiZWxpZXZlIHRoYXQgeW914oCZdmUgYWxyZWFkeSBzdWJtaXR0ZWQgYWxsIHlvdXIgcmV0dXJucywgY29udGFjdCA8YSBocmVmPW1haWx0bzoiVkFUT1NTLkNvbnRhY3RAaG1yYy5nb3YudWsiIGNsYXNzPSJnb3Z1ay1saW5rIj5WQVRPU1MuQ29udGFjdEBobXJjLmdvdi51azwvYT4gYW5kIHF1b3RlIHlvdXIgSU9TUyBpbnRlcm1lZGlhcnkgbnVtYmVyLg0KPC9wPg0KPHAgY2xhc3M9ImdvdnVrLWJvZHkiPllvdXIgaW50ZXJtZWRpYXJ5IG51bWJlciBpczogSU0xMTExMTExMTEyIDwvcD4="
         |    }
         |  ],
         |  "alertDetails": {
         |    "templateId": "new_message_alert_ioss_netp",
         |    "recipientName": {
-        |      "line1": "Bob",
-        |      "line2": "Jones"
+        |      "line1": "Test",
+        |      "line2": "Test"
         |    },
         |    "data": {
-        |      "email": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |      "issueDate": "2025-08-01",
+        |      "email": "test@test.com",
+        |      "issueDate": "2025-11-26",
         |      "language": "en",
-        |      "subject": "Import One Stop Shop (IOSS)"
+        |      "subject": "Your IOSS VAT Return for Another Client is late"
         |    }
         |  },
         |  "details": {
         |    "formId": "M08aGIOSS",
         |    "sourceData": "test-source-data",
-        |    "batchId": "IOSSMessage",
-        |    "issueDate": "2025-08-01"
+        |    "batchId": "IOSSMessage"
         |  },
-        |  "emailAddress": "chandan.ray+M08aGIOSS@digital.hmrc.gov.uk",
-        |  "hash": "jyPX4WfsvuLinO7DaQVEIwNpSn64zO5W89Dd8pG2t7U=",
+        |  "emailAddress": "test@test.com",
+        |  "hash": "6qRiBvxaC6rpWX3ZlBGc3VtkSDjxkdw8/98Bnk8ylSI=",
         |  "status": "deferred",
         |  "verificationBrake": false,
         |  "readTime": {
-        |    "$date": "2014-05-02T17:17:45.618Z"
+        |    "$date": "2025-11-26T15:37:14.893Z"
         |  }
         |}
         |""".stripMargin
