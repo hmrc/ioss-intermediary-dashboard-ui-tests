@@ -81,6 +81,10 @@ object Auth extends BasePage {
       sendKeys(By.id("input-1-0-value"), intNumber)
     }
     click(By.cssSelector("Input[value='Submit']"))
+
+    if (vrnType == "nonNiAddress") {
+      fluentWait.until(ExpectedConditions.urlContains("has-business-address-in-ni?waypoints=change-your-registration"))
+    }
   }
 
 }
