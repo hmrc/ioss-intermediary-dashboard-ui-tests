@@ -32,4 +32,29 @@ object Payment extends BasePage {
       Assert.assertFalse(htmlBody.contains(text))
     }
   }
+
+  def checkClientList(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains(
+        "Client name IOSS number\n" +
+          "Payment details for First Client\n" + // hidden text
+          "First Client IM9001144771\n" +
+          "Payment details for Second Client\n" + // hidden text
+          "Second Client IM9001144772\n" +
+          "Payment details for Third Client\n" + // hidden text
+          "Third Client IM9001144773\n" +
+          "Payment details for Fourth Client\n" + // hidden text
+          "Fourth Client IM9001144774\n" +
+          "Payment details for Fifth Client\n" + // hidden text
+          "Fifth Client IM9001144775\n" +
+          "Payment details for Sixth Client\n" + // hidden text
+          "Sixth Client IM9001144776\n" +
+          "Payment details for Seventh Client\n" + // hidden text
+          "Seventh Client IM9001144777\n" +
+          "Payment details for Eighth Client\n" + // hidden text
+          "Eighth Client IM9001144778"
+      )
+    )
+  }
 }

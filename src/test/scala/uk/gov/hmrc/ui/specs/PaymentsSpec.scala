@@ -20,9 +20,9 @@ import uk.gov.hmrc.ui.pages.*
 
 class PaymentsSpec extends BaseSpec {
 
-  private val dashboard        = Dashboard
-  private val auth             = Auth
-  private val payment = Payment
+  private val dashboard = Dashboard
+  private val auth      = Auth
+  private val payment   = Payment
 
   Feature("View client payments list") {
 
@@ -43,6 +43,7 @@ class PaymentsSpec extends BaseSpec {
       )
       dashboard.checkJourneyUrl("client-payments-list")
       payment.noClients(false)
+      payment.checkClientList()
     }
 
     Scenario("Intermediary has no clients to select for payment") {
