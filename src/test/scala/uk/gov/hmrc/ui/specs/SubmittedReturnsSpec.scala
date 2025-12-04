@@ -28,7 +28,7 @@ class SubmittedReturnsSpec extends BaseSpec {
   Feature("View clients submitted returns list") {
 
     Scenario(
-      "Intermediary views submitted returns list where they have multiple active clients and multiple previous clients"
+      "Intermediary views submitted returns list where they have returns submitted for some of their active clients and previous clients"
     ) {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
@@ -43,13 +43,14 @@ class SubmittedReturnsSpec extends BaseSpec {
         "the intermediary is shown their client's submitted returns list with multiple active clients and multiple previous clients"
       )
       dashboard.checkJourneyUrl("client-returns-list")
-//      submittedReturn.noReturnsSubmitted(false)
-//      submittedReturn.showInset(true)
-      viewRegistration.activeClients(true)
-      viewRegistration.previousClients(true)
+      submittedReturn.noReturnsSubmitted(false)
+      submittedReturn.showInset(true)
+      submittedReturn.clientsDisplayed("multipleActiveAndPreviousRegistrations")
     }
 
-    Scenario("Intermediary views submitted returns list with only active clients") {
+    Scenario(
+      "Intermediary views submitted returns list with only active clients where only one has submitted returns"
+    ) {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
@@ -63,13 +64,15 @@ class SubmittedReturnsSpec extends BaseSpec {
         "the intermediary is shown their client's submitted returns list with only active clients and no previous clients"
       )
       dashboard.checkJourneyUrl("client-returns-list")
-//      submittedReturn.noReturnsSubmitted(false)
-//      submittedReturn.showInset(true)
-      viewRegistration.activeClients(true)
+      submittedReturn.noReturnsSubmitted(false)
+      submittedReturn.showInset(true)
       viewRegistration.previousClients(false)
+      submittedReturn.clientsDisplayed("onlyActiveRegistrations")
     }
 
-    Scenario("Intermediary views client's submitted returns list with only previous clients") {
+    Scenario(
+      "Intermediary views client's submitted returns list with only previous clients who have all submitted returns"
+    ) {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
@@ -83,10 +86,10 @@ class SubmittedReturnsSpec extends BaseSpec {
         "the intermediary is shown their client's submitted returns list with only previous clients and no active clients"
       )
       dashboard.checkJourneyUrl("client-returns-list")
-//      submittedReturn.noReturnsSubmitted(false)
-//      submittedReturn.showInset(true)
+      submittedReturn.noReturnsSubmitted(false)
+      submittedReturn.showInset(true)
       viewRegistration.activeClients(false)
-      viewRegistration.previousClients(true)
+      submittedReturn.clientsDisplayed("onlyPreviousRegistrations")
     }
 
     Scenario("Intermediary views client's submitted returns list with no active or previous clients") {
@@ -100,18 +103,60 @@ class SubmittedReturnsSpec extends BaseSpec {
       dashboard.clickLink("view-return")
 
       Then(
-        "the intermediary is shown their client's submitted returns list with no active clients and no previous clients"
+        "the intermediary has no returns to display"
       )
       dashboard.checkJourneyUrl("client-returns-list")
-//      submittedReturn.noReturnsSubmitted(true)
-//      submittedReturn.showInset(false)
+      submittedReturn.noReturnsSubmitted(true)
+      submittedReturn.showInset(false)
+      viewRegistration.activeClients(false)
+      viewRegistration.previousClients(false)
+    }
+
+    Scenario(
+      "Intermediary views client's submitted returns list with only active clients who have no returns submitted yet"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "activeNoReturns")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the 'View submitted returns' link on the dashboard")
+      dashboard.clickLink("view-return")
+
+      Then(
+        "the intermediary has no returns to display"
+      )
+      dashboard.checkJourneyUrl("client-returns-list")
+      submittedReturn.noReturnsSubmitted(true)
+      submittedReturn.showInset(false)
+      viewRegistration.activeClients(false)
+      viewRegistration.previousClients(false)
+    }
+
+    Scenario(
+      "Intermediary views client's submitted returns list with only previous clients who have no returns submitted"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "previousNoReturns")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the 'View submitted returns' link on the dashboard")
+      dashboard.clickLink("view-return")
+
+      Then(
+        "the intermediary has no returns to display"
+      )
+      dashboard.checkJourneyUrl("client-returns-list")
+      submittedReturn.noReturnsSubmitted(true)
+      submittedReturn.showInset(false)
       viewRegistration.activeClients(false)
       viewRegistration.previousClients(false)
     }
 
 //    Following further development, will also need to add further steps/scenarios to check:
-//    Clients who do not have any submitted returns are not on the list
-//    Need to alter noReturnsSubmitted and inset checks to be accurate
 //    Click through to view returns, single, multiple, over multiple years etc
 //    Viewing returns from previous IOSS registrations
   }

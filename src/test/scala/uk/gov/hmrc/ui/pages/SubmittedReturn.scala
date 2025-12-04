@@ -37,10 +37,55 @@ object SubmittedReturn extends BasePage {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     val text     = "If your client does not appear on this list, then you have not completed any returns for them."
 
-    if (show == true) {
+    if (show) {
       Assert.assertTrue(htmlBody.contains(text))
     } else {
       Assert.assertFalse(htmlBody.contains(text))
+    }
+  }
+
+  def clientsDisplayed(scenario: String): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    scenario match {
+      case "multipleActiveAndPreviousRegistrations" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "First Client IM9001144771\n" +
+              "View returns for\n" + // hidden text
+              "Seventh Client IM9001144777\n" +
+              "Previous clients that have left the service\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Second Client IM9001144772"
+          )
+        )
+      case "onlyActiveRegistrations"                =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Active Client 2 IM9001144882"
+          )
+        )
+      case "onlyPreviousRegistrations"              =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Previous clients that have left the service\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Previous Client 1 IM9001144884\n" +
+              "View returns for\n" + // hidden text
+              "Previous Client 2 IM9001144885\n" +
+              "View returns for\n" + // hidden text
+              "Previous Client 3 IM9001144886"
+          )
+        )
+      case _                                        =>
+        throw new Exception("Scenario doesn't exist")
     }
   }
 }
