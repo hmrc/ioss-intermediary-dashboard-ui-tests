@@ -176,7 +176,7 @@ class StartReturnSpec extends BaseSpec {
         "the intermediary is shown they have no returns due"
       )
       dashboard.checkJourneyUrl("client-outstanding-returns-list")
-      startReturn.checkHeading("You do not have any clients with outstanding returns on your account")
+      startReturn.checkHeading("You do not have any clients with returns due.")
       startReturn.noOverdueReturnsLink()
 
       When("the intermediary manually navigates to the overdue ")
@@ -184,7 +184,7 @@ class StartReturnSpec extends BaseSpec {
 
       Then("the intermediary is shown they have no overdue returns")
       dashboard.checkJourneyUrl("client-overdue-returns-list")
-      startReturn.checkHeading("You do not have any clients with outstanding returns on your account")
+      startReturn.checkHeading("You do not have any clients with returns due.")
       startReturn.noViewClientsLink()
     }
   }
