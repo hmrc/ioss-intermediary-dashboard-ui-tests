@@ -20,8 +20,8 @@ import uk.gov.hmrc.ui.pages.*
 
 class StartReturnSpec extends BaseSpec {
 
-  private val dashboard = Dashboard
-  private val auth = Auth
+  private val dashboard   = Dashboard
+  private val auth        = Auth
   private val startReturn = StartReturn
 
   Feature("Start client returns list") {
@@ -137,7 +137,7 @@ class StartReturnSpec extends BaseSpec {
       Then("the intermediary is redirected to the returns service to start the return")
       //      Will not work until VEI-661 is merged
       //            startReturn.checkStartReturnDynamic("one")
-      
+
       When("the intermediary manually navigates back to their returns due list")
       dashboard.goToPage("client-outstanding-returns-list")
 
@@ -159,7 +159,7 @@ class StartReturnSpec extends BaseSpec {
       //      Will not work until VEI-661 is merged
       //            startReturn.checkStartReturnDynamic("two")
     }
-    
+
     Scenario(
       "Intermediary has no returns due for their clients"
     ) {

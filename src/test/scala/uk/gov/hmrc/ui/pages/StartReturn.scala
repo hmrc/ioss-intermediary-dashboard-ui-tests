@@ -26,7 +26,7 @@ import java.time.LocalDate
 
 object StartReturn extends BasePage {
 
-  private val intermediaryReturnsUrl: String =
+  private val intermediaryReturnsUrl: String        =
     TestEnvironment.url("ioss-returns-frontend")
   private val intermediaryReturnsJourneyUrl: String =
     "/pay-vat-on-goods-sold-to-eu/import-one-stop-shop-returns-payments"
@@ -38,45 +38,45 @@ object StartReturn extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(
             "Client name IOSS number\n" +
-            "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Eighth Client IM9001144778\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Fifth Client IM9001144775\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "First Client IM9001144771\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Fourth Client IM9001144774\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Second Client IM9001144772\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Seventh Client IM9001144777\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Sixth Client IM9001144776\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Third Client IM9001144773"
           )
         )
-      case "twoReturnsDue" =>
+      case "twoReturnsDue"     =>
         Assert.assertTrue(
           htmlBody.contains(
             "Client name IOSS number\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 2 IM9001144844\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 4 IM9001144866"
           )
         )
-      case "fourReturnsDue" =>
+      case "fourReturnsDue"    =>
         Assert.assertTrue(
           htmlBody.contains(
             "Client name IOSS number\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 1 IM9001144877\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 2 IM9001144888\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 3 IM9001144899\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 4 IM9001144800"
           )
         )
@@ -84,14 +84,14 @@ object StartReturn extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(
             "Client name IOSS number\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 3 IM9001144899\n" +
-              "Start return for\n" + //hidden text
+              "Start return for\n" + // hidden text
               "Returns 4 IM9001144800"
           )
         )
 
-      case _                                        =>
+      case _ =>
         throw new Exception("Scenario doesn't exist")
     }
   }
@@ -117,7 +117,7 @@ object StartReturn extends BasePage {
     val returnYear = LocalDate.now().minusMonths(1).getYear
 
     val returnMonth = if (monthsAgo == "one") {
-       LocalDate.now().minusMonths(1).getMonthValue
+      LocalDate.now().minusMonths(1).getMonthValue
     } else {
       LocalDate.now().minusMonths(1).getMonthValue
     }
