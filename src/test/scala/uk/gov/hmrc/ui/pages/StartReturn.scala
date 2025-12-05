@@ -119,7 +119,7 @@ object StartReturn extends BasePage {
     val returnMonth = if (monthsAgo == "one") {
       LocalDate.now().minusMonths(1).getMonthValue
     } else {
-      LocalDate.now().minusMonths(1).getMonthValue
+      LocalDate.now().minusMonths(2).getMonthValue
     }
 
     val periodString = s"$returnYear-M$returnMonth"
