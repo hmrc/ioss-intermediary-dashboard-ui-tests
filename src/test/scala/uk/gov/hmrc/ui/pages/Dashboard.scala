@@ -59,4 +59,7 @@ object Dashboard extends BasePage {
     Driver.instance
       .navigate()
       .back()
+
+  def goToPage(page: String): Unit =
+    get(s"$dashboardUrl$journeyUrl/$page")
 }

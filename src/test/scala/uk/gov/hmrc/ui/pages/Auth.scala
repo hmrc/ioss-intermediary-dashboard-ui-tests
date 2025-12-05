@@ -78,6 +78,9 @@ object Auth extends BasePage {
         case "quarantineExpired"                                              => "IN9002323335"
         case "activeNoReturns"                                                => "IN9001144663"
         case "previousNoReturns"                                              => "IN9001144665"
+        case "noReturnsDue"                                                   => "IN9008888885"
+        case "noOverdueReturns"                                               => "IN9008888884"
+        case "dueReturnsSomeOverdue"                                          => "IN9008888883"
         case _                                                                => "IN9001112223"
       }
       sendKeys(By.id("input-1-0-value"), intNumber)
