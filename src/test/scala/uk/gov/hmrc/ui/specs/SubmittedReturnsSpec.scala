@@ -24,6 +24,7 @@ class SubmittedReturnsSpec extends BaseSpec {
   private val auth             = Auth
   private val viewRegistration = ViewRegistration
   private val submittedReturn  = SubmittedReturn
+  private val startReturn      = StartReturn
 
   Feature("View clients submitted returns list") {
 
@@ -156,8 +157,28 @@ class SubmittedReturnsSpec extends BaseSpec {
       viewRegistration.previousClients(false)
     }
 
-//    Following further development, will also need to add further steps/scenarios to check:
-//    Click through to view returns, single, multiple, over multiple years etc
-//    Viewing returns from previous IOSS registrations
+    Scenario(
+      "Intermediary views a submitted return for a client"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "multipleActiveAndPreviousRegistrations")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the 'View submitted returns' link on the dashboard")
+      dashboard.clickLink("view-return")
+
+      Then(
+        "the intermediary is shown their client's submitted returns list with multiple active clients and multiple previous clients"
+      )
+      dashboard.checkJourneyUrl("client-returns-list")
+
+      And("the intermediary selects 'First Client'")
+      startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9001144771")
+
+      Then("the intermediary is redirected to view their submitted returns in the returns service")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+    }
   }
 }
