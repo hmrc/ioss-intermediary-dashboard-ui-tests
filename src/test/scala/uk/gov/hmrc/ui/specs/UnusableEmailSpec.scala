@@ -25,7 +25,9 @@ class UnusableEmailSpec extends BaseSpec {
 
   Feature("Unusable email journey") {
 
-    Scenario("When intermediary logs in with unusable email status, they are presented with the intercept page instead of the dashboard tiles") {
+    Scenario(
+      "When intermediary logs in with unusable email status, they are presented with the intercept page instead of the dashboard tiles"
+    ) {
 
       Given("the intermediary logs in")
       auth.goToAuthorityWizard()
