@@ -192,7 +192,7 @@ class TileLinksSpec extends BaseSpec {
       "Intermediary who has multiple NETPs where one has outstanding returns does not have access to the Rejoin this service link"
     ) {
 
-      Given("the quarantined intermediary accesses the IOSS Intermediary Dashboard Service")
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard(true, true, "standard", "netpOutstandingReturns")
       dashboard.checkJourneyUrl("your-account")
@@ -205,7 +205,7 @@ class TileLinksSpec extends BaseSpec {
       "Intermediary who has no NETPs with outstanding returns has access to the Rejoin this service link"
     ) {
 
-      Given("the intermediary with expired quarantine accesses the IOSS Intermediary Dashboard Service")
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard(true, true, "standard", "netpNoOutstandingReturns")
       dashboard.checkJourneyUrl("your-account")
