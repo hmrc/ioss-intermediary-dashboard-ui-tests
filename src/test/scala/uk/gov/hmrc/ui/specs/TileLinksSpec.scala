@@ -165,7 +165,7 @@ class TileLinksSpec extends BaseSpec {
       auth.loginUsingAuthorityWizard(true, true, "standard", "quarantineExpired")
       dashboard.checkJourneyUrl("your-account")
 
-      Then("the Rejoin this service link is not displayed")
+      Then("the Rejoin this service link is displayed")
       tileLinks.rejoinThisServiceLink(true)
 
       When("the intermediary clicks the Rejoin this service link")
@@ -186,6 +186,38 @@ class TileLinksSpec extends BaseSpec {
 
       Then("the Rejoin this service link is not displayed")
       tileLinks.rejoinThisServiceLink(false)
+    }
+
+    Scenario(
+      "Intermediary who has multiple NETPs where one has outstanding returns does not have access to the Rejoin this service link"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "netpOutstandingReturns")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is not displayed")
+      tileLinks.rejoinThisServiceLink(false)
+    }
+
+    Scenario(
+      "Intermediary who has no NETPs with outstanding returns has access to the Rejoin this service link"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "netpNoOutstandingReturns")
+      dashboard.checkJourneyUrl("your-account")
+
+      Then("the Rejoin this service link is displayed")
+      tileLinks.rejoinThisServiceLink(true)
+
+      When("the intermediary clicks the Rejoin this service link")
+      dashboard.clickLink("rejoin-scheme")
+
+      Then("the intermediary is redirected to the Intermediary registration service")
+      tileLinks.checkIntermediaryRegistrationJourneyUrl("rejoin-check-your-details")
     }
   }
 }
