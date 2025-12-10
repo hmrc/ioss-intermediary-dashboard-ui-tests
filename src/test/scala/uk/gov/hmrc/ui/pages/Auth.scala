@@ -83,6 +83,7 @@ object Auth extends BasePage {
         case "dueReturnsSomeOverdue"                                          => "IN9008888883"
         case "netpOutstandingReturns"                                         => "IN9000306832"
         case "netpNoOutstandingReturns"                                       => "IN9000306831"
+        case "unusableEmailStatus"                                            => "IN9002222222"
         case _                                                                => "IN9001112223"
       }
       sendKeys(By.id("input-1-0-value"), intNumber)
