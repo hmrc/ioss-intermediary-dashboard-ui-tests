@@ -19,8 +19,12 @@ package uk.gov.hmrc.ui.pages
 import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
+import org.scalatest.matchers.should.Matchers.*
+import uk.gov.hmrc.configuration.TestEnvironment
 
 object Payment extends BasePage {
+
+  val paymentsHost: String = TestEnvironment.url("pay-frontend")
 
   def noClients(show: Boolean): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
@@ -56,5 +60,23 @@ object Payment extends BasePage {
           "Eighth Client IM9001144778"
       )
     )
+  }
+
+  def selectClientForPayment(link: String): Unit =
+    click(By.cssSelector(s"a[href*=$link]"))
+
+  def checkSinglePaymentsUrl(): Unit =
+    getCurrentUrl should startWith(s"$paymentsHost/pay/select-payment-amount?traceId=")
+
+  def noOutstandingPayments(): Unit =
+    val h1 = Driver.instance.findElement(By.tagName("h1")).getText
+    Assert.assertTrue(h1.equals("You do not owe any Import One Stop Shop VAT"))
+
+  def multiplePayments(): Unit = {
+    val h1       = Driver.instance.findElement(By.tagName("h1")).getText
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+
+    Assert.assertTrue(h1.equals("Which month would you like to make a payment for?"))
+    Assert.assertTrue(htmlBody.contains("February 2025\nJanuary 2025"))
   }
 }
