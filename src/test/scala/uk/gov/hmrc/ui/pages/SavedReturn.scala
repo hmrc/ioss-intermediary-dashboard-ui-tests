@@ -25,7 +25,7 @@ object SavedReturn extends BasePage {
 
   def savedReturnsAvailable(scenario: String): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
-    val heading = Driver.instance.findElement(By.tagName("h1")).getText
+    val heading  = Driver.instance.findElement(By.tagName("h1")).getText
 
     scenario match {
       case "multipleSavedReturns" =>
@@ -36,7 +36,7 @@ object SavedReturn extends BasePage {
               "Saved Return 3 (IOSS reference IM9006655443)"
           )
         )
-      case "singleSavedReturn" =>
+      case "singleSavedReturn"    =>
         Assert.assertTrue(
           heading.equals(
 //            Will require update once issues resolved
@@ -60,13 +60,17 @@ object SavedReturn extends BasePage {
 
     answer match {
       case "yes" => click(By.id("value_0"))
-      case "no" => click(By.id("value_1"))
-      case _ => throw new Exception("Option doesn't exist")
+      case "no"  => click(By.id("value_1"))
+      case _     => throw new Exception("Option doesn't exist")
     }
     click(By.id("continue"))
 
     if (answer == "yes") {
-      fluentWait.until(ExpectedConditions.urlContains("http://localhost:10193/pay-vat-on-goods-sold-to-eu/import-one-stop-shop-returns-payments"))
+      fluentWait.until(
+        ExpectedConditions.urlContains(
+          "http://localhost:10193/pay-vat-on-goods-sold-to-eu/import-one-stop-shop-returns-payments"
+        )
+      )
     }
   }
 
@@ -74,8 +78,8 @@ object SavedReturn extends BasePage {
 
     answer match {
       case "yes" => click(By.id("value"))
-      case "no" => click(By.id("value-no"))
-      case _ => throw new Exception("Option doesn't exist")
+      case "no"  => click(By.id("value-no"))
+      case _     => throw new Exception("Option doesn't exist")
     }
     click(By.id("continue"))
   }
