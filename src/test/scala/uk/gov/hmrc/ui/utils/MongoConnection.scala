@@ -76,6 +76,20 @@ object MongoConnection {
       case e: Exception => println("Error: " + e)
     }
 
+  def dropSavedReturnRecords(db: String, collection: String, iossNumber: String): Unit =
+    try
+      Await.result(
+        mongoClient
+          .getDatabase(db)
+          .getCollection(collection)
+          .deleteMany(filter = Filters.equal("iossNumber", iossNumber))
+          .head(),
+        timeout
+      )
+    catch {
+      case e: Exception => println("Error: " + e)
+    }
+
   def dropPendingRegistrations(): Unit = {
     dropPendingRegistrations("ioss-netp-registration", "pending-registration", "IN9001112223")
     dropPendingRegistrations("ioss-netp-registration", "pending-registration", "IN9001112224")
@@ -84,4 +98,13 @@ object MongoConnection {
 
   def dropSecureMessages(): Unit =
     dropSecureMessageRecords("message", "secure-message")
+
+  def dropSavedReturns(): Unit = {
+    dropSavedReturnRecords("ioss-returns", "saved-user-answers", "IM9006655441")
+    dropSavedReturnRecords("ioss-returns", "saved-user-answers", "IM9006655442")
+    dropSavedReturnRecords("ioss-returns", "saved-user-answers", "IM9006655443")
+    dropSavedReturnRecords("ioss-returns", "saved-user-answers", "IM9006655551")
+    dropSavedReturnRecords("ioss-returns", "saved-user-answers", "IM9006655552")
+    dropSavedReturnRecords("ioss-returns", "saved-user-answers", "IM9006655553")
+  }
 }

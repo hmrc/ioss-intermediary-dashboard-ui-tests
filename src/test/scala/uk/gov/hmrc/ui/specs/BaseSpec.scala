@@ -20,7 +20,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.data.{PendingRegistrations, SecureMessages}
+import uk.gov.hmrc.ui.data.{PendingRegistrations, SavedReturns, SecureMessages}
 import uk.gov.hmrc.ui.utils.MongoConnection
 
 trait BaseSpec
@@ -37,6 +37,8 @@ trait BaseSpec
     MongoConnection.insert(PendingRegistrations.data, "ioss-netp-registration", "pending-registration")
     MongoConnection.dropSecureMessages()
     MongoConnection.insert(SecureMessages.data, "message", "secure-message")
+    MongoConnection.dropSavedReturns()
+    MongoConnection.insert(SavedReturns.data, "ioss-returns", "saved-user-answers")
 
   override def afterEach(): Unit =
     quitBrowser()
