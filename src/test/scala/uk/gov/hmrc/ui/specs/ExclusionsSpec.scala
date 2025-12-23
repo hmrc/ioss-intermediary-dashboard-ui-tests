@@ -22,7 +22,7 @@ class ExclusionsSpec extends BaseSpec {
 
   private val dashboard = Dashboard
   private val auth      = Auth
-  private val exclusion      = Exclusion
+  private val exclusion = Exclusion
 
   Feature("Exclusion dashboard warnings") {
 
@@ -35,7 +35,9 @@ class ExclusionsSpec extends BaseSpec {
       When("the intermediary is on their dashboard")
       dashboard.checkJourneyUrl("your-account")
 
-      Then("the correct warning is displayed for an intermediary who has left the service and has outstanding returns for a NETP")
+      Then(
+        "the correct warning is displayed for an intermediary who has left the service and has outstanding returns for a NETP"
+      )
       exclusion.warningToShow("selfOutstanding")
     }
 
@@ -48,7 +50,9 @@ class ExclusionsSpec extends BaseSpec {
       When("the intermediary is on their dashboard")
       dashboard.checkJourneyUrl("your-account")
 
-      Then("the correct warning is displayed for an intermediary who has left the service and has no outstanding returns for a NETP")
+      Then(
+        "the correct warning is displayed for an intermediary who has left the service and has no outstanding returns for a NETP"
+      )
       exclusion.warningToShow("selfNoOutstanding")
     }
 
@@ -74,7 +78,9 @@ class ExclusionsSpec extends BaseSpec {
       When("the intermediary is on their dashboard")
       dashboard.checkJourneyUrl("your-account")
 
-      Then("the correct warning is displayed for an HMRC-excluded intermediary who has no outstanding returns for a NETP")
+      Then(
+        "the correct warning is displayed for an HMRC-excluded intermediary who has no outstanding returns for a NETP"
+      )
       exclusion.warningToShow("hmrcNoOutstanding")
     }
 

@@ -86,10 +86,10 @@ object Auth extends BasePage {
         case "unusableEmailStatus"                                            => "IN9002222222"
         case "multipleSavedReturns"                                           => "IN9006655444"
         case "singleSavedReturn"                                              => "IN9006655555"
-        case "hmrcExcludedOutstandingReturns"                                 => "IN9000306833"
-        case "hmrcExcludedNoOutstandingReturns"                               => "IN9000306834"
-        case "quarantinedOutstandingReturns"                                  => "IN9000306835"
-        case "quarantinedNoOutstandingReturns"                                => "IN9000306836"
+        case "hmrcExcludedOutstandingReturns"                                 => "IN9000306834"
+        case "hmrcExcludedNoOutstandingReturns"                               => "IN9000306833"
+        case "quarantinedOutstandingReturns"                                  => "IN9000306836"
+        case "quarantinedNoOutstandingReturns"                                => "IN9000306835"
         case _                                                                => "IN9001112223"
       }
       sendKeys(By.id("input-1-0-value"), intNumber)
