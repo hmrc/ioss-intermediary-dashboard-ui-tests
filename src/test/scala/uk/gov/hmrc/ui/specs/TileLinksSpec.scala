@@ -23,6 +23,7 @@ class TileLinksSpec extends BaseSpec {
   private val dashboard = Dashboard
   private val auth      = Auth
   private val tileLinks = TileLinks
+  private val exclusion = Exclusion
 
   Feature("Tile Link journeys") {
 
@@ -132,6 +133,9 @@ class TileLinksSpec extends BaseSpec {
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard(true, true, "standard", "excludedPast")
       dashboard.checkJourneyUrl("your-account")
+
+      And("the correct dashboard warning is shown for a self-excluded Intermediary with no clients")
+      exclusion.warningToShow("selfNoOutstanding")
 
       Then("the Rejoin this service link is displayed")
       tileLinks.rejoinThisServiceLink(true)
