@@ -28,24 +28,32 @@ object Exclusion extends BasePage {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
 
     scenario match {
-      case "selfOutstanding" =>
-        Assert.assertTrue(htmlBody.contains(
-          "You have left this service. You must complete and pay any outstanding returns for all your clients."))
-      case "selfNoOutstanding" =>
-        Assert.assertTrue(htmlBody.contains(
-          "You have left this service."))
-      case "hmrcOutstanding" =>
-        Assert.assertTrue(htmlBody.contains(
-          "We have removed you from this service. You must complete and pay any outstanding returns for all your clients."))
-      case "hmrcNoOutstanding" =>
-        Assert.assertTrue(htmlBody.contains(
-          "We have removed you from this service."))
-      case "quarantinedOutstanding" =>
-        Assert.assertTrue(htmlBody.contains(
-          "We have removed you from this service, but you must complete and pay your final return for all your clients. You cannot rejoin until"))
+      case "selfOutstanding"          =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "You have left this service. You must complete and pay any outstanding returns for all your clients."
+          )
+        )
+      case "selfNoOutstanding"        =>
+        Assert.assertTrue(htmlBody.contains("You have left this service."))
+        Assert.assertFalse(htmlBody.contains("You must complete and pay any outstanding returns for all your clients."))
+      case "hmrcOutstanding"          =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "We have removed you from this service. You must complete and pay any outstanding returns for all your clients."
+          )
+        )
+      case "hmrcNoOutstanding"        =>
+        Assert.assertTrue(htmlBody.contains("We have removed you from this service."))
+        Assert.assertFalse(htmlBody.contains("You must complete and pay any outstanding returns for all your clients."))
+      case "quarantinedOutstanding"   =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "We have removed you from this service, but you must complete and pay your final return for all your clients. You cannot rejoin until"
+          )
+        )
       case "quarantinedNoOutstanding" =>
-        Assert.assertTrue(htmlBody.contains(
-          "We have removed you from this service. You cannot rejoin until"))
+        Assert.assertTrue(htmlBody.contains("We have removed you from this service. You cannot rejoin until"))
 
       case _ =>
         throw new Exception("Scenario doesn't exist")
