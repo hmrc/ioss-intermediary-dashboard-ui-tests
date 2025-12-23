@@ -39,6 +39,9 @@ class ExclusionsSpec extends BaseSpec {
         "the correct warning is displayed for an intermediary who has left the service and has outstanding returns for a NETP"
       )
       exclusion.warningToShow("selfOutstanding")
+
+      And("there is no 'Add a new client' link on the dashboard")
+      exclusion.noAddClientLink()
     }
 
     Scenario("Self-excluded intermediary where NETPs have no outstanding returns") {
@@ -54,6 +57,9 @@ class ExclusionsSpec extends BaseSpec {
         "the correct warning is displayed for an intermediary who has left the service and has no outstanding returns for a NETP"
       )
       exclusion.warningToShow("selfNoOutstanding")
+
+      And("there is no 'Add a new client' link on the dashboard")
+      exclusion.noAddClientLink()
     }
 
     Scenario("HMRC-excluded intermediary where NETPs have outstanding returns") {
@@ -67,6 +73,9 @@ class ExclusionsSpec extends BaseSpec {
 
       Then("the correct warning is displayed for an HMRC-excluded intermediary who has outstanding returns for a NETP")
       exclusion.warningToShow("hmrcOutstanding")
+
+      And("there is no 'Add a new client' link on the dashboard")
+      exclusion.noAddClientLink()
     }
 
     Scenario("HMRC-excluded intermediary where NETPs have no outstanding returns") {
@@ -82,6 +91,9 @@ class ExclusionsSpec extends BaseSpec {
         "the correct warning is displayed for an HMRC-excluded intermediary who has no outstanding returns for a NETP"
       )
       exclusion.warningToShow("hmrcNoOutstanding")
+
+      And("there is no 'Add a new client' link on the dashboard")
+      exclusion.noAddClientLink()
     }
 
     Scenario("Quarantined intermediary where NETPs have outstanding returns") {
@@ -95,6 +107,9 @@ class ExclusionsSpec extends BaseSpec {
 
       Then("the correct warning is displayed for a quarantined intermediary who has outstanding returns for a NETP")
       exclusion.warningToShow("quarantinedOutstanding")
+
+      And("there is no 'Add a new client' link on the dashboard")
+      exclusion.noAddClientLink()
     }
 
     Scenario("Quarantined intermediary where NETPs have no outstanding returns") {
@@ -108,6 +123,9 @@ class ExclusionsSpec extends BaseSpec {
 
       Then("the correct warning is displayed for a quarantined intermediary who has no outstanding returns for a NETP")
       exclusion.warningToShow("quarantinedNoOutstanding")
+
+      And("there is no 'Add a new client' link on the dashboard")
+      exclusion.noAddClientLink()
     }
   }
 }
