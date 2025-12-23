@@ -18,8 +18,6 @@ package uk.gov.hmrc.ui.pages
 
 import org.junit.Assert
 import org.openqa.selenium.By
-import org.scalatest.matchers.should.Matchers.*
-import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 
 object Exclusion extends BasePage {
@@ -58,5 +56,10 @@ object Exclusion extends BasePage {
       case _ =>
         throw new Exception("Scenario doesn't exist")
     }
+  }
+
+  def noAddClientLink(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("Add a new client"))
   }
 }
