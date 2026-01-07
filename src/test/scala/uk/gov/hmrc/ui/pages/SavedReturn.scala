@@ -39,8 +39,7 @@ object SavedReturn extends BasePage {
       case "singleSavedReturn"    =>
         Assert.assertTrue(
           heading.equals(
-//            Will require update once issues resolved
-            "Do you want to continue the return for Single Saved Return (VAT/tax reference: IM9006655551)?"
+            "Do you want to continue the return for Single Saved Return (IOSS reference: IM9006655551)?"
           )
         )
 
