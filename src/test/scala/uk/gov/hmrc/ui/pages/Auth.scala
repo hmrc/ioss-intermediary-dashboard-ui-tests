@@ -96,7 +96,7 @@ object Auth extends BasePage {
       }
       sendKeys(By.id("input-1-0-value"), intNumber)
 
-      if (intNumberType == "IN9002230002") {
+      if (intNumberType == "multipleIntermediaryRegistrations") {
         sendKeys(By.id("enrolment[2].name"), "HMRC-IOSS-INT")
         sendKeys(By.id("input-2-0-name"), "IntNumber")
         sendKeys(By.id("input-2-0-value"), "IN9001230002")
@@ -106,7 +106,7 @@ object Auth extends BasePage {
         sendKeys(By.id("input-3-0-value"), "IN9000230002")
       }
 
-      if (intNumberType == "IN9002230001") {
+      if (intNumberType == "onePreviousIntermediaryRegistration") {
         sendKeys(By.id("enrolment[2].name"), "HMRC-IOSS-INT")
         sendKeys(By.id("input-2-0-name"), "IntNumber")
         sendKeys(By.id("input-2-0-value"), "IN9001230001")

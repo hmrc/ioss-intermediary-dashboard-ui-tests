@@ -22,7 +22,6 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
   private val dashboard            = Dashboard
   private val auth                 = Auth
-  private val viewRegistration     = ViewRegistration
   private val submittedReturn      = SubmittedReturn
   private val startReturn          = StartReturn
   private val previousRegistration = PreviousRegistration
@@ -143,7 +142,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       And("the correct clients are displayed with returns for IN9001230001")
       dashboard.checkJourneyUrl("client-previous-registration-returns-list")
-      previousRegistration.checkIntermediaryNumber("IN9000130001")
+      previousRegistration.checkIntermediaryNumber("IN9001230001")
       submittedReturn.clientsDisplayed("onePreviousIntermediaryOldestRegistration")
 
       When("the intermediary clicks on 'Single Previous Reg - Client One'")

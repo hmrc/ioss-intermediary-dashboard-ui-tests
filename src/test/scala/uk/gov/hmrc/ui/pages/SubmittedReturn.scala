@@ -90,7 +90,7 @@ object SubmittedReturn extends BasePage {
             "Active clients\n" +
               "Client name IOSS number\n" +
               "View returns for\n" + // hidden text
-              "New Client Five IM9001144671" +
+              "New Client Five IM9001144671\n" +
               "View returns for\n" + // hidden text
               "New Client Six IM9001144672"
           )
@@ -98,10 +98,9 @@ object SubmittedReturn extends BasePage {
       case "multipleIntermediaryOldestRegistration"    =>
         Assert.assertTrue(
           htmlBody.contains(
-            "Active clients\n" +
-              "Client name IOSS number\n" +
+            "Client name IOSS number\n" +
               "View returns for\n" + // hidden text
-              "New Client One IM9001144667" +
+              "New Client One IM9001144667\n" +
               "View returns for\n" + // hidden text
               "New Client Two IM9001144668"
           )
@@ -109,10 +108,9 @@ object SubmittedReturn extends BasePage {
       case "multipleIntermediaryMiddleRegistration"    =>
         Assert.assertTrue(
           htmlBody.contains(
-            "Active clients\n" +
-              "Client name IOSS number\n" +
+            "Client name IOSS number\n" +
               "View returns for\n" + // hidden text
-              "New Client Four IM9001144670" +
+              "New Client Four IM9001144670\n" +
               "View returns for\n" + // hidden text
               "New Client Three IM9001144669"
           )
@@ -123,7 +121,7 @@ object SubmittedReturn extends BasePage {
             "Active clients\n" +
               "Client name IOSS number\n" +
               "View returns for\n" + // hidden text
-              "Current Reg - Client One IM9002144671" +
+              "Current Reg - Client One IM9002144671\n" +
               "View returns for\n" + // hidden text
               "Current Reg - Client Two IM9002144672"
           )
@@ -131,10 +129,9 @@ object SubmittedReturn extends BasePage {
       case "onePreviousIntermediaryOldestRegistration" =>
         Assert.assertTrue(
           htmlBody.contains(
-            "Active clients\n" +
-              "Client name IOSS number\n" +
+            "Client name IOSS number\n" +
               "View returns for\n" + // hidden text
-              "Single Previous Reg - Client One IM9002144669" +
+              "Single Previous Reg - Client One IM9002144669\n" +
               "View returns for\n" + // hidden text
               "Single Previous Reg - Client Two IM9002144670"
           )
