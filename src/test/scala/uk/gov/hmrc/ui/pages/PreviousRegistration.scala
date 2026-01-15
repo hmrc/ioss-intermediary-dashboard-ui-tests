@@ -24,7 +24,7 @@ object PreviousRegistration extends BasePage {
 
   def multiplePreviousRegistrationsLink(version: String): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
-    val single = "View clients and returns from your previous IOSS registration"
+    val single   = "View clients and returns from your previous IOSS registration"
     val multiple = "View clients and returns from your previous IOSS registrations"
 
     if (version == "single") {
@@ -37,9 +37,8 @@ object PreviousRegistration extends BasePage {
     }
   }
 
-  def viewPreviousRegistrations(link: String): Unit = {
+  def viewPreviousRegistrations(link: String): Unit =
     clickCssSelector(link)
-  }
 
   def selectPreviousRegistration(intermediaryNumber: String): Unit = {
     click(By.id(intermediaryNumber))

@@ -47,7 +47,7 @@ object SubmittedReturn extends BasePage {
   def clientsDisplayed(scenario: String): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     scenario match {
-      case "multipleActiveAndPreviousRegistrations" =>
+      case "multipleActiveAndPreviousRegistrations"    =>
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
@@ -62,7 +62,7 @@ object SubmittedReturn extends BasePage {
               "Second Client IM9001144772"
           )
         )
-      case "onlyActiveRegistrations"                =>
+      case "onlyActiveRegistrations"                   =>
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
@@ -71,7 +71,7 @@ object SubmittedReturn extends BasePage {
               "Active Client 2 IM9001144882"
           )
         )
-      case "onlyPreviousRegistrations"              =>
+      case "onlyPreviousRegistrations"                 =>
         Assert.assertTrue(
           htmlBody.contains(
             "Previous clients that have left the service\n" +
@@ -84,7 +84,7 @@ object SubmittedReturn extends BasePage {
               "Previous Client 3 IM9001144886"
           )
         )
-      case "multipleIntermediaryNewestRegistration" =>
+      case "multipleIntermediaryNewestRegistration"    =>
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
@@ -95,7 +95,7 @@ object SubmittedReturn extends BasePage {
               "New Client Six IM9001144672"
           )
         )
-      case "multipleIntermediaryOldestRegistration" =>
+      case "multipleIntermediaryOldestRegistration"    =>
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
@@ -106,7 +106,7 @@ object SubmittedReturn extends BasePage {
               "New Client Two IM9001144668"
           )
         )
-      case "multipleIntermediaryMiddleRegistration" =>
+      case "multipleIntermediaryMiddleRegistration"    =>
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
@@ -117,7 +117,29 @@ object SubmittedReturn extends BasePage {
               "New Client Three IM9001144669"
           )
         )
-      case _                                        =>
+      case "onePreviousIntermediaryNewestRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Current Reg - Client One IM9002144671" +
+              "View returns for\n" + // hidden text
+              "Current Reg - Client Two IM9002144672"
+          )
+        )
+      case "onePreviousIntermediaryOldestRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Single Previous Reg - Client One IM9002144669" +
+              "View returns for\n" + // hidden text
+              "Single Previous Reg - Client Two IM9002144670"
+          )
+        )
+      case _                                           =>
         throw new Exception("Scenario doesn't exist")
     }
   }
