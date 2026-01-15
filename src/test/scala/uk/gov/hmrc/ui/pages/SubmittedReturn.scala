@@ -84,6 +84,39 @@ object SubmittedReturn extends BasePage {
               "Previous Client 3 IM9001144886"
           )
         )
+      case "multipleIntermediaryNewestRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "New Client Five IM9001144671" +
+              "View returns for\n" + // hidden text
+              "New Client Six IM9001144672"
+          )
+        )
+      case "multipleIntermediaryOldestRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "New Client One IM9001144667" +
+              "View returns for\n" + // hidden text
+              "New Client Two IM9001144668"
+          )
+        )
+      case "multipleIntermediaryMiddleRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "New Client Four IM9001144670" +
+              "View returns for\n" + // hidden text
+              "New Client Three IM9001144669"
+          )
+        )
       case _                                        =>
         throw new Exception("Scenario doesn't exist")
     }
