@@ -49,8 +49,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144778")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      //      Not showing the correct return
-      //      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M1/start-return")
+      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M1/start-return")
     }
 
     Scenario(
@@ -80,8 +79,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144777")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      //      Will not work until VEI-661 is merged
-      //      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M3/start-return")
+      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M3/start-return")
     }
 
     Scenario(
@@ -108,8 +106,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144844")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      //      Will not work until VEI-661 is merged
-//            startReturn.checkStartReturnDynamic("one")
+      startReturn.checkIntermediaryReturnsRedirect()
     }
 
     Scenario(
@@ -135,8 +132,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144877")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      //      Will not work until VEI-661 is merged
-      //            startReturn.checkStartReturnDynamic("one")
+      startReturn.checkIntermediaryReturnsRedirect()
 
       When("the intermediary manually navigates back to their returns due list")
       dashboard.goToPage("client-outstanding-returns-list")
@@ -156,8 +152,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144899")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      //      Will not work until VEI-661 is merged
-      //            startReturn.checkStartReturnDynamic("two")
+      startReturn.checkIntermediaryReturnsRedirect()
     }
 
     Scenario(
@@ -187,5 +182,51 @@ class StartReturnSpec extends BaseSpec {
       startReturn.checkHeading("You do not have any clients with returns due.")
       startReturn.noViewClientsLink()
     }
+  }
+
+  Scenario(
+    "Intermediary has an excluded NETP with open returns over 3 years old"
+  ) {
+
+    Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+    auth.goToAuthorityWizard()
+    auth.loginUsingAuthorityWizard(true, true, "standard", "openReturnsOverThreeYears")
+    dashboard.checkJourneyUrl("your-account")
+
+    When("the intermediary clicks the 'Start a return' link on the dashboard")
+    dashboard.clickLink("start-a-return")
+
+    Then(
+      "the intermediary is shown they have no returns due"
+    )
+    dashboard.checkJourneyUrl("client-outstanding-returns-list")
+    startReturn.checkHeading("You do not have any clients with returns due.")
+    startReturn.noOverdueReturnsLink()
+  }
+
+  Scenario(
+    "Intermediary views start returns list where one excluded NETP client has overdue returns over and under 3 years"
+  ) {
+
+    Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+    auth.goToAuthorityWizard()
+    auth.loginUsingAuthorityWizard(true, true, "standard", "openReturnsExcludedClient")
+    dashboard.checkJourneyUrl("your-account")
+
+    When("the intermediary clicks the 'Start a return' link on the dashboard")
+    dashboard.clickLink("start-a-return")
+
+    Then(
+      "the intermediary is shown the client with returns overdue but not the one with returns that are over 3 year period"
+    )
+    dashboard.checkJourneyUrl("client-outstanding-returns-list")
+    startReturn.checkHeading("Which clients return do you want to start?")
+    startReturn.clientsWithReturns("onlyOneExcludedClientDisplayed")
+
+    When("the intermediary clicks on the client name")
+    startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9005005005")
+
+    Then("the intermediary is redirected to the returns service to start the return")
+    startReturn.checkIntermediaryReturnsRedirect()
   }
 }

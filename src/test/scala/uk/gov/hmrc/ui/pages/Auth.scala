@@ -90,6 +90,8 @@ object Auth extends BasePage {
         case "hmrcExcludedNoOutstandingReturns"                               => "IN9000306833"
         case "quarantinedOutstandingReturns"                                  => "IN9000306836"
         case "quarantinedNoOutstandingReturns"                                => "IN9000306835"
+        case "openReturnsOverThreeYears"                                      => "IN9004004004"
+        case "openReturnsExcludedClient"                                      => "IN9005005005"
         case "multipleIntermediaryRegistrations"                              => "IN9002230002"
         case "onePreviousIntermediaryRegistration"                            => "IN9002230001"
         case _                                                                => "IN9001112223"
