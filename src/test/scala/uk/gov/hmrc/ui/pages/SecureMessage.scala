@@ -34,7 +34,7 @@ object SecureMessage extends BasePage {
   }
 
   def selectSecureMessage(link: String): Unit =
-    click(By.cssSelector(s"a[href*=$link]"))
+    clickCssSelector(link)
 
   def checkSecureMessagesHeading(heading: String): Unit = {
     val heading = Driver.instance.findElement(By.tagName("h2")).getText

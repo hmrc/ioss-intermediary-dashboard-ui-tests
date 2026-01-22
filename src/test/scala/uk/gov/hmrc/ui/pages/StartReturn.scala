@@ -107,7 +107,7 @@ object StartReturn extends BasePage {
   }
 
   def selectClientReturnLink(link: String): Unit =
-    click(By.cssSelector(s"a[href*=$link]"))
+    clickCssSelector(link)
 
   def checkIntermediaryReturnsJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl/$page")

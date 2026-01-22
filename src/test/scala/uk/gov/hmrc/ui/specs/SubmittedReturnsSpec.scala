@@ -20,11 +20,12 @@ import uk.gov.hmrc.ui.pages.*
 
 class SubmittedReturnsSpec extends BaseSpec {
 
-  private val dashboard        = Dashboard
-  private val auth             = Auth
-  private val viewRegistration = ViewRegistration
-  private val submittedReturn  = SubmittedReturn
-  private val startReturn      = StartReturn
+  private val dashboard            = Dashboard
+  private val auth                 = Auth
+  private val viewRegistration     = ViewRegistration
+  private val submittedReturn      = SubmittedReturn
+  private val startReturn          = StartReturn
+  private val previousRegistration = PreviousRegistration
 
   Feature("View clients submitted returns list") {
 
@@ -47,6 +48,7 @@ class SubmittedReturnsSpec extends BaseSpec {
       submittedReturn.noReturnsSubmitted(false)
       submittedReturn.showInset(true)
       submittedReturn.clientsDisplayed("multipleActiveAndPreviousRegistrations")
+      previousRegistration.multiplePreviousRegistrationsLink("None")
     }
 
     Scenario(

@@ -42,7 +42,7 @@ object PendingRegistration extends BasePage {
   }
 
   def selectClientLink(link: String): Unit =
-    click(By.cssSelector(s"a[href*=$link]"))
+    clickCssSelector(link)
 
   def checkClientName(clientName: String): Unit = {
     val h1 = Driver.instance.findElement(By.tagName("h1")).getText

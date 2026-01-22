@@ -90,9 +90,27 @@ object Auth extends BasePage {
         case "hmrcExcludedNoOutstandingReturns"                               => "IN9000306833"
         case "quarantinedOutstandingReturns"                                  => "IN9000306836"
         case "quarantinedNoOutstandingReturns"                                => "IN9000306835"
+        case "multipleIntermediaryRegistrations"                              => "IN9002230002"
+        case "onePreviousIntermediaryRegistration"                            => "IN9002230001"
         case _                                                                => "IN9001112223"
       }
       sendKeys(By.id("input-1-0-value"), intNumber)
+
+      if (intNumberType == "multipleIntermediaryRegistrations") {
+        sendKeys(By.id("enrolment[2].name"), "HMRC-IOSS-INT")
+        sendKeys(By.id("input-2-0-name"), "IntNumber")
+        sendKeys(By.id("input-2-0-value"), "IN9001230002")
+
+        sendKeys(By.id("enrolment[3].name"), "HMRC-IOSS-INT")
+        sendKeys(By.id("input-3-0-name"), "IntNumber")
+        sendKeys(By.id("input-3-0-value"), "IN9000230002")
+      }
+
+      if (intNumberType == "onePreviousIntermediaryRegistration") {
+        sendKeys(By.id("enrolment[2].name"), "HMRC-IOSS-INT")
+        sendKeys(By.id("input-2-0-name"), "IntNumber")
+        sendKeys(By.id("input-2-0-value"), "IN9001230001")
+      }
     }
     click(By.cssSelector("Input[value='Submit']"))
 

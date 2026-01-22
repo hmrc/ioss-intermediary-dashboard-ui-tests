@@ -63,7 +63,7 @@ object Payment extends BasePage {
   }
 
   def selectClientForPayment(link: String): Unit =
-    click(By.cssSelector(s"a[href*=$link]"))
+    clickCssSelector(link)
 
   def checkSinglePaymentsUrl(): Unit =
     getCurrentUrl should startWith(s"$paymentsHost/pay/select-payment-amount?traceId=")
