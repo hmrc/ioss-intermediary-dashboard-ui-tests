@@ -48,7 +48,7 @@ class SubmittedReturnsSpec extends BaseSpec {
       submittedReturn.noReturnsSubmitted(false)
       submittedReturn.showInset(true)
       submittedReturn.clientsDisplayed("multipleActiveAndPreviousRegistrations")
-      previousRegistration.multiplePreviousRegistrationsLink("None")
+      previousRegistration.multiplePreviousRegistrationsLink("noneReturns")
     }
 
     Scenario(

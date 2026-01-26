@@ -54,4 +54,64 @@ object ViewRegistration extends BasePage {
       Assert.assertFalse(htmlBody.contains(text))
     }
   }
+
+  def clientsDisplayed(scenario: String): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    scenario match {
+      case "multipleIntermediaryNewestRegistration"    =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "Change client details for\n" + // hidden text
+              "New Client Five IM9001144671\n" +
+              "Change client details for\n" + // hidden text
+              "New Client Six IM9001144672"
+          )
+        )
+      case "multipleIntermediaryOldestRegistration"    =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Client name IOSS number\n" +
+              "Change client details for\n" + // hidden text
+              "New Client One IM9001144667\n" +
+              "Change client details for\n" + // hidden text
+              "New Client Two IM9001144668"
+          )
+        )
+      case "multipleIntermediaryMiddleRegistration"    =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "New Client Four IM9001144670\n" +
+              "View returns for\n" + // hidden text
+              "New Client Three IM9001144669"
+          )
+        )
+      case "onePreviousIntermediaryNewestRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Active clients\n" +
+              "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Current Reg - Client One IM9002144671\n" +
+              "View returns for\n" + // hidden text
+              "Current Reg - Client Two IM9002144672"
+          )
+        )
+      case "onePreviousIntermediaryOldestRegistration" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Client name IOSS number\n" +
+              "View returns for\n" + // hidden text
+              "Single Previous Reg - Client One IM9002144669\n" +
+              "View returns for\n" + // hidden text
+              "Single Previous Reg - Client Two IM9002144670"
+          )
+        )
+      case _                                           =>
+        throw new Exception("Scenario doesn't exist")
+    }
+  }
 }
