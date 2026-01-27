@@ -57,6 +57,7 @@ object ViewRegistration extends BasePage {
 
   def clientsDisplayed(scenario: String): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+
     scenario match {
       case "multipleIntermediaryNewestRegistration"    =>
         Assert.assertTrue(
@@ -64,9 +65,11 @@ object ViewRegistration extends BasePage {
             "Active clients\n" +
               "Client name IOSS number\n" +
               "Change client details for\n" + // hidden text
-              "New Client Five IM9001144671\n" +
+              "New Client Five IM9001144671 Remove\n" +
+              "Remove client details for New Client Five\n" + // hidden text
               "Change client details for\n" + // hidden text
-              "New Client Six IM9001144672"
+              "New Client Six IM9001144672 Remove\n" +
+              "Remove client details for New Client Six" // hidden text
           )
         )
       case "multipleIntermediaryOldestRegistration"    =>
@@ -83,10 +86,10 @@ object ViewRegistration extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(
             "Client name IOSS number\n" +
-              "View returns for\n" + // hidden text
-              "New Client Four IM9001144670\n" +
-              "View returns for\n" + // hidden text
-              "New Client Three IM9001144669"
+              "Change client details for\n" + // hidden text
+              "New Client Three IM9001144669\n" +
+              "Change client details for\n" + // hidden text
+              "New Client Four IM9001144670"
           )
         )
       case "onePreviousIntermediaryNewestRegistration" =>
@@ -94,19 +97,21 @@ object ViewRegistration extends BasePage {
           htmlBody.contains(
             "Active clients\n" +
               "Client name IOSS number\n" +
-              "View returns for\n" + // hidden text
-              "Current Reg - Client One IM9002144671\n" +
-              "View returns for\n" + // hidden text
-              "Current Reg - Client Two IM9002144672"
+              "Change client details for\n" + // hidden text
+              "Current Reg - Client One IM9002144671 Remove\n" +
+              "Remove client details for Current Reg - Client One\n" + // hidden text
+              "Change client details for\n" + // hidden text
+              "Current Reg - Client Two IM9002144672 Remove\n" +
+              "Remove client details for Current Reg - Client Two" // hidden text
           )
         )
       case "onePreviousIntermediaryOldestRegistration" =>
         Assert.assertTrue(
           htmlBody.contains(
             "Client name IOSS number\n" +
-              "View returns for\n" + // hidden text
+              "Change client details for\n" + // hidden text
               "Single Previous Reg - Client One IM9002144669\n" +
-              "View returns for\n" + // hidden text
+              "Change client details for\n" + // hidden text
               "Single Previous Reg - Client Two IM9002144670"
           )
         )

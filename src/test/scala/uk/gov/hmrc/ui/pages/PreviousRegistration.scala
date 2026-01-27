@@ -62,10 +62,10 @@ object PreviousRegistration extends BasePage {
     Assert.assertTrue(body.contains(s"IOSS intermediary number: $intermediaryNumber"))
   }
 
-  def returnToCurrentRegistrationLink(): Unit = {
+  def returnToCurrentRegistrationLink(page: String): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("Return to your current registration"))
-    clickCssSelector("client-returns-list")
+    clickCssSelector(page)
   }
 
   def selectPreviousRegistrationAmend(intermediaryNumber: String): Unit = {
