@@ -91,6 +91,20 @@ object StartReturn extends BasePage {
           )
         )
 
+      case "onlyOneExcludedClientDisplayed" =>
+        Assert.assertTrue(
+          htmlBody.contains(
+            "Client name IOSS number\n" +
+              "Start return for\n" + // hidden text
+              "Returns over 3 years old - Open IM9005005005\n"
+          )
+        )
+        Assert.assertFalse(
+          htmlBody.contains(
+            "Returns over 3 years old - Open Expired IM9005005555"
+          )
+        )
+
       case _ =>
         throw new Exception("Scenario doesn't exist")
     }
@@ -112,21 +126,8 @@ object StartReturn extends BasePage {
   def checkIntermediaryReturnsJourneyUrl(page: String): Unit =
     getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl/$page")
 
-  def checkStartReturnDynamic(monthsAgo: String): Unit = {
-
-    val returnYear = LocalDate.now().minusMonths(1).getYear
-
-    val returnMonth = if (monthsAgo == "one") {
-      LocalDate.now().minusMonths(1).getMonthValue
-    } else {
-      LocalDate.now().minusMonths(2).getMonthValue
-    }
-
-    val periodString = s"$returnYear-M$returnMonth"
-
-    getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl/$periodString/start-return")
-
-  }
+  def checkIntermediaryReturnsRedirect(): Unit =
+    getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl")
 
   def checkHeading(heading: String): Unit = {
     val heading = Driver.instance.findElement(By.tagName("h1")).getText
