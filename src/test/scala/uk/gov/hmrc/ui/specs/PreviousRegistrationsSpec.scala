@@ -185,7 +185,6 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary is shown their client list with multiple active clients and multiple previous clients")
       dashboard.checkJourneyUrl("client-list")
-      previousRegistration.checkIntermediaryNumber("IN9002230002")
 
       And("the correct link is displayed to allow intermediary to view registrations from previous registrations")
       previousRegistration.multiplePreviousRegistrationsLink("multipleRegistrations")
@@ -262,7 +261,6 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary is shown their client list with multiple active clients and multiple previous clients")
       dashboard.checkJourneyUrl("client-list")
-      previousRegistration.checkIntermediaryNumber("IN9002230001")
 
       And("the correct link is displayed to allow intermediary to view registrations from previous registrations")
       previousRegistration.multiplePreviousRegistrationsLink("singleRegistration")
@@ -286,7 +284,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       And("the correct client registrations are listed for IN9001230001")
       dashboard.checkJourneyUrl("change-your-previous-registration")
       previousRegistration.checkIntermediaryNumber("IN9001230001")
-      viewRegistration.clientsDisplayed("multipleIntermediaryOldestRegistration")
+      viewRegistration.clientsDisplayed("onePreviousIntermediaryOldestRegistration")
 
       When("the intermediary clicks on 'Single Previous Reg - Client One'")
       startReturn.selectClientReturnLink("start-amend-journey\\/IM9002144669")

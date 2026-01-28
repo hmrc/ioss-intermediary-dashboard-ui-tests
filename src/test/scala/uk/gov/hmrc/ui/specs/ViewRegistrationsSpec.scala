@@ -20,11 +20,12 @@ import uk.gov.hmrc.ui.pages.*
 
 class ViewRegistrationsSpec extends BaseSpec {
 
-  private val dashboard           = Dashboard
-  private val auth                = Auth
-  private val viewRegistration    = ViewRegistration
-  private val pendingRegistration = PendingRegistration
-  private val tileLinks           = TileLinks
+  private val dashboard            = Dashboard
+  private val auth                 = Auth
+  private val viewRegistration     = ViewRegistration
+  private val pendingRegistration  = PendingRegistration
+  private val tileLinks            = TileLinks
+  private val previousRegistration = PreviousRegistration
 
   Feature("View and remove registration list") {
 
@@ -43,6 +44,7 @@ class ViewRegistrationsSpec extends BaseSpec {
       viewRegistration.noActiveClients(false)
       viewRegistration.activeClients(true)
       viewRegistration.previousClients(true)
+      previousRegistration.multiplePreviousRegistrationsLink("noneRegistrations")
 
       When("the intermediary clicks on the client name for IM9001144771")
       pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144771")
