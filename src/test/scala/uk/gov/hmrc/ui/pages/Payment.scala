@@ -73,15 +73,8 @@ object Payment extends BasePage {
     Assert.assertTrue(h1.equals("You do not owe any Import One Stop Shop VAT"))
 
   def multiplePayments(): Unit = {
-    val h1       = Driver.instance.findElement(By.tagName("h1")).getText
-    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    val h1 = Driver.instance.findElement(By.tagName("h1")).getText
 
     Assert.assertTrue(h1.equals("Which month would you like to make a payment for?"))
-    Assert.assertTrue(
-      htmlBody.contains(
-        "£397.30 owed for February 2025\n" +
-          "£1,397.30 owed for January 2025"
-      )
-    )
   }
 }

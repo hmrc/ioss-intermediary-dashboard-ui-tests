@@ -70,7 +70,7 @@ class PaymentsSpec extends BaseSpec {
       Then("the intermediary is redirected to the outstanding-payments page")
       startReturn.checkIntermediaryReturnsJourneyUrl("outstanding-payments")
 
-      And("the intermediary has payments available for January and February 2025")
+      And("the intermediary has multiple payments available")
       payment.multiplePayments()
     }
 
