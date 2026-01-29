@@ -77,6 +77,11 @@ object Payment extends BasePage {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
 
     Assert.assertTrue(h1.equals("Which month would you like to make a payment for?"))
-    Assert.assertTrue(htmlBody.contains("February 2025\nJanuary 2025"))
+    Assert.assertTrue(
+      htmlBody.contains(
+        "£397.30 owed for February 2025\n" +
+          "£1,397.30 owed for January 2025"
+      )
+    )
   }
 }
