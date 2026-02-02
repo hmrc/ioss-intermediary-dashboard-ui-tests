@@ -42,7 +42,7 @@ class KickoutSpec extends BaseSpec {
       auth.loginUsingAuthorityWizard(true, false, "notRequired", "default")
 
       Then("the intermediary is shown the sorry there is a problem page")
-      dashboard.checkProblemPage()
+      dashboard.insufficientEnrolmentPage()
     }
   }
 }

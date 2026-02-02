@@ -43,6 +43,12 @@ object Dashboard extends BasePage {
     Assert.assertTrue(h1.equals("Sorry, there is a problem with the service"))
   }
 
+  def insufficientEnrolmentPage(): Unit = {
+    fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
+    val h1 = Driver.instance.findElement(By.tagName("h1")).getText
+    Assert.assertTrue(h1.equals("You cannot use this service"))
+  }
+
   def clickLink(link: String): Unit =
     click(By.id(link))
 
