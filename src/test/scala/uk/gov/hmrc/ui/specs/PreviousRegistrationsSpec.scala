@@ -25,6 +25,9 @@ class PreviousRegistrationsSpec extends BaseSpec {
   private val submittedReturn      = SubmittedReturn
   private val startReturn          = StartReturn
   private val previousRegistration = PreviousRegistration
+  private val viewRegistration     = ViewRegistration
+  private val pendingRegistration  = PendingRegistration
+  private val tileLinks            = TileLinks
 
   Feature("View clients submitted returns list when the intermediary has previous registrations") {
 
@@ -49,7 +52,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       submittedReturn.clientsDisplayed("multipleIntermediaryNewestRegistration")
 
       And("the correct link is displayed to allow intermediary to view returns from previous registrations")
-      previousRegistration.multiplePreviousRegistrationsLink("multiple")
+      previousRegistration.multiplePreviousRegistrationsLink("multipleReturns")
 
       When("the intermediary clicks the 'View clients and returns from your previous IOSS registrations' link")
       previousRegistration.viewPreviousRegistrations("client-previous-registration-list")
@@ -74,7 +77,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary clicks the 'Return to your current registration' link")
       dashboard.checkJourneyUrl("client-previous-registration-returns-list")
-      previousRegistration.returnToCurrentRegistrationLink()
+      previousRegistration.returnToCurrentRegistrationLink("client-returns-list")
 
       And("the intermediary is back to the client list for their current return")
       dashboard.checkJourneyUrl("client-returns-list")
@@ -102,7 +105,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary clicks the 'Return to your current registration' link")
       dashboard.checkJourneyUrl("client-previous-registration-returns-list")
-      previousRegistration.returnToCurrentRegistrationLink()
+      previousRegistration.returnToCurrentRegistrationLink("client-returns-list")
 
       And("the intermediary is back to the client list for their current return")
       dashboard.checkJourneyUrl("client-returns-list")
@@ -135,7 +138,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       submittedReturn.clientsDisplayed("onePreviousIntermediaryNewestRegistration")
 
       And("the correct link is displayed to allow intermediary to view returns from previous registrations")
-      previousRegistration.multiplePreviousRegistrationsLink("single")
+      previousRegistration.multiplePreviousRegistrationsLink("singleReturn")
 
       When("the intermediary clicks the 'View clients and returns from your previous IOSS registrations' link")
       previousRegistration.viewPreviousRegistrations("client-previous-registration-list")
@@ -156,7 +159,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary clicks the 'Return to your current registration' link")
       dashboard.checkJourneyUrl("client-previous-registration-returns-list")
-      previousRegistration.returnToCurrentRegistrationLink()
+      previousRegistration.returnToCurrentRegistrationLink("client-returns-list")
 
       And("the intermediary is back to the client list for their current return")
       dashboard.checkJourneyUrl("client-returns-list")
@@ -166,6 +169,136 @@ class PreviousRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary is redirected to the submitted return on the IOSS returns service")
       startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+    }
+
+    Scenario(
+      "Intermediary has multiple previous registrations - view NETP registrations"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "multipleIntermediaryRegistrations")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the 'View, edit or remove a client' link on the dashboard")
+      dashboard.clickLink("edit-client")
+
+      Then("the intermediary is shown their client list with multiple active clients and multiple previous clients")
+      dashboard.checkJourneyUrl("client-list")
+
+      And("the correct link is displayed to allow intermediary to view registrations from previous registrations")
+      previousRegistration.multiplePreviousRegistrationsLink("multipleRegistrations")
+
+      And("the correct clients are displayed from the most recent registration")
+      viewRegistration.clientsDisplayed("multipleIntermediaryNewestRegistration")
+
+      When("the intermediary clicks on the client name for IM9001144671")
+      pendingRegistration.selectClientLink("start-amend-journey\\/IM9001144671")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration")
+
+      When("the intermediary navigates back to the client list")
+      dashboard.clickBackButton()
+      dashboard.checkJourneyUrl("client-list")
+
+      Then("the intermediary clicks on the 'View clients from your previous IOSS registrations' link")
+      previousRegistration.viewPreviousRegistrations("change-your-previous-registration-start")
+
+      Then("the intermediary selects the registration for IN9000230002")
+      dashboard.checkJourneyUrl("change-your-previous-registration-select")
+      previousRegistration.selectPreviousRegistrationAmend("IN9000230002")
+
+      And("the correct client registrations are listed for IN9000230002")
+      dashboard.checkJourneyUrl("change-your-previous-registration")
+      previousRegistration.checkIntermediaryNumber("IN9000230002")
+      viewRegistration.clientsDisplayed("multipleIntermediaryOldestRegistration")
+
+      When("the intermediary clicks on 'New Client One'")
+      startReturn.selectClientReturnLink("start-amend-journey\\/IM9001144667")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration")
+
+      When("the intermediary navigates back to the client list")
+      dashboard.clickBackButton()
+      dashboard.checkJourneyUrl("change-your-previous-registration")
+
+      Then("the intermediary clicks the 'Return to your current registration' link")
+      previousRegistration.returnToCurrentRegistrationLink("client-list")
+      dashboard.checkJourneyUrl("client-list")
+
+      Then("the intermediary clicks on the 'View clients from your previous IOSS registrations' link")
+      previousRegistration.viewPreviousRegistrations("change-your-previous-registration-start")
+
+      Then("the intermediary selects the registration for IN9001230002")
+      dashboard.checkJourneyUrl("change-your-previous-registration-select")
+      previousRegistration.selectPreviousRegistrationAmend("IN9001230002")
+
+      And("the correct client registrations are listed for IN9001230002")
+      dashboard.checkJourneyUrl("change-your-previous-registration")
+      previousRegistration.checkIntermediaryNumber("IN9001230002")
+      viewRegistration.clientsDisplayed("multipleIntermediaryMiddleRegistration")
+
+      When("the intermediary clicks on 'New Client Three'")
+      startReturn.selectClientReturnLink("start-amend-journey\\/IM9001144669")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration")
+    }
+
+    Scenario(
+      "Intermediary has one previous registration - view NETP registrations"
+    ) {
+
+      Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard(true, true, "standard", "onePreviousIntermediaryRegistration")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the intermediary clicks the 'View, edit or remove a client' link on the dashboard")
+      dashboard.clickLink("edit-client")
+
+      Then("the intermediary is shown their client list with multiple active clients and multiple previous clients")
+      dashboard.checkJourneyUrl("client-list")
+
+      And("the correct link is displayed to allow intermediary to view registrations from previous registrations")
+      previousRegistration.multiplePreviousRegistrationsLink("singleRegistration")
+
+      And("the correct clients are displayed from the most recent registration")
+      viewRegistration.clientsDisplayed("onePreviousIntermediaryNewestRegistration")
+
+      When("the intermediary clicks on the client name for IM9002144671")
+      pendingRegistration.selectClientLink("start-amend-journey\\/IM9002144671")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration")
+
+      When("the intermediary navigates back to the client list")
+      dashboard.clickBackButton()
+      dashboard.checkJourneyUrl("client-list")
+
+      Then("the intermediary clicks on the 'View clients from your previous IOSS registration' link")
+      previousRegistration.viewPreviousRegistrations("change-your-previous-registration-start")
+
+      And("the correct client registrations are listed for IN9001230001")
+      dashboard.checkJourneyUrl("change-your-previous-registration")
+      previousRegistration.checkIntermediaryNumber("IN9001230001")
+      viewRegistration.clientsDisplayed("onePreviousIntermediaryOldestRegistration")
+
+      When("the intermediary clicks on 'Single Previous Reg - Client One'")
+      startReturn.selectClientReturnLink("start-amend-journey\\/IM9002144669")
+
+      Then("the intermediary is redirected to the amend journey within the registration service")
+      tileLinks.checkRegistrationJourneyUrl("change-your-registration")
+
+      When("the intermediary navigates back to the client list")
+      dashboard.clickBackButton()
+      dashboard.checkJourneyUrl("change-your-previous-registration")
+
+      Then("the intermediary clicks the 'Return to your current registration' link")
+      previousRegistration.returnToCurrentRegistrationLink("client-list")
+      dashboard.checkJourneyUrl("client-list")
     }
   }
 }
