@@ -19,9 +19,15 @@ package uk.gov.hmrc.ui.pages
 import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 
 object SavedReturn extends BasePage {
+
+  private val intermediaryReturnsUrl: String        =
+    TestEnvironment.url("ioss-returns-frontend")
+  private val intermediaryReturnsJourneyUrl: String =
+    "/pay-vat-on-goods-sold-to-eu/import-one-stop-shop-returns-payments"
 
   def savedReturnsAvailable(scenario: String): Unit = {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
@@ -53,33 +59,6 @@ object SavedReturn extends BasePage {
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.id(radioButtonId)))
     click(By.id(radioButtonId))
     click(By.id("continue"))
-  }
-
-  def answerRadioButton(answer: String): Unit = {
-
-    answer match {
-      case "yes" => click(By.id("value_0"))
-      case "no"  => click(By.id("value_1"))
-      case _     => throw new Exception("Option doesn't exist")
-    }
-    click(By.id("continue"))
-
-    if (answer == "yes") {
-      fluentWait.until(
-        ExpectedConditions.urlContains(
-          "http://localhost:10193/pay-vat-on-goods-sold-to-eu/import-one-stop-shop-returns-payments"
-        )
-      )
-    }
-  }
-
-  def deleteReturn(answer: String): Unit = {
-
-    answer match {
-      case "yes" => click(By.id("value"))
-      case "no"  => click(By.id("value-no"))
-      case _     => throw new Exception("Option doesn't exist")
-    }
-    click(By.id("continue"))
+    fluentWait.until(ExpectedConditions.urlContains(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl"))
   }
 }
