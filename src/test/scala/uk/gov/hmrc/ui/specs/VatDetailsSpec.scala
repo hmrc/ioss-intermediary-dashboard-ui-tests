@@ -33,7 +33,7 @@ class VatDetailsSpec extends BaseSpec {
       auth.loginUsingAuthorityWizard(true, true, "notFound", "default")
 
       Then("the intermediary is shown the sorry there is a problem page")
-      dashboard.checkJourneyUrl("your-account")
+      dashboard.checkJourneyUrl("no-registration-found")
       dashboard.checkProblemPage()
     }
 
@@ -46,7 +46,7 @@ class VatDetailsSpec extends BaseSpec {
       auth.loginUsingAuthorityWizard(true, true, "internalServerError", "default")
 
       Then("the intermediary is shown the sorry there is a problem page")
-      dashboard.checkJourneyUrl("your-account")
+      dashboard.checkJourneyUrl("no-registration-found")
       dashboard.checkProblemPage()
     }
 
