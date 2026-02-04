@@ -61,32 +61,4 @@ object SavedReturn extends BasePage {
     click(By.id("continue"))
     fluentWait.until(ExpectedConditions.urlContains(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl"))
   }
-
-  def answerRadioButton(answer: String): Unit = {
-
-    answer match {
-      case "yes" => click(By.id("value_0"))
-      case "no"  => click(By.id("value_1"))
-      case _     => throw new Exception("Option doesn't exist")
-    }
-    click(By.id("continue"))
-
-    if (answer == "yes") {
-      fluentWait.until(
-        ExpectedConditions.urlContains(
-          "http://localhost:10193/pay-vat-on-goods-sold-to-eu/import-one-stop-shop-returns-payments"
-        )
-      )
-    }
-  }
-
-  def deleteReturn(answer: String): Unit = {
-
-    answer match {
-      case "yes" => click(By.id("value"))
-      case "no"  => click(By.id("value-no"))
-      case _     => throw new Exception("Option doesn't exist")
-    }
-    click(By.id("continue"))
-  }
 }
