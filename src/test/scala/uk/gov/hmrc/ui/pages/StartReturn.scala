@@ -22,8 +22,6 @@ import org.scalatest.matchers.should.Matchers.*
 import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 
-import java.time.LocalDate
-
 object StartReturn extends BasePage {
 
   private val intermediaryReturnsUrl: String        =
