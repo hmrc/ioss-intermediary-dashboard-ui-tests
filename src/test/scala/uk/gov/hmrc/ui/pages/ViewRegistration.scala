@@ -63,7 +63,7 @@ object ViewRegistration extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
-              "Client name IOSS number\n" +
+              "Client name IOSS number Action\n" +
               "Change client details for\n" + // hidden text
               "New Client Five IM9001144671 Remove\n" +
               "Remove client details for New Client Five\n" + // hidden text
@@ -96,7 +96,7 @@ object ViewRegistration extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(
             "Active clients\n" +
-              "Client name IOSS number\n" +
+              "Client name IOSS number Action\n" +
               "Change client details for\n" + // hidden text
               "Current Reg - Client One IM9002144671 Remove\n" +
               "Remove client details for Current Reg - Client One\n" + // hidden text
