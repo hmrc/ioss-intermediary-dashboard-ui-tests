@@ -9,7 +9,7 @@
       "reason": "Test-only endpoints do not need accessibility testing as they are used purely for testing purposes."
     },
     {
-      "path": "/http://localhost:10176/pay-clients-vat-on-eu-sales/leave-import-one-stop-shop-netp/start-journey/",
+      "path": "/pay-clients-vat-on-eu-sales/leave-import-one-stop-shop-netp/start-journey/",
       "reason": "This endpoint has no view or HTML to validate."
     }
   ]
