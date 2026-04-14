@@ -180,7 +180,7 @@ class SubmittedReturnsSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9001144771")
 
       Then("the intermediary is redirected to view their submitted returns in the returns service")
-      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns", "IM9001144771")
     }
   }
 }

@@ -68,7 +68,7 @@ class PaymentsSpec extends BaseSpec {
       payment.selectClientForPayment("start-payment-as-intermediary\\/IM9001144771")
 
       Then("the intermediary is redirected to the outstanding-payments page")
-      startReturn.checkIntermediaryReturnsJourneyUrl("outstanding-payments")
+      startReturn.checkIntermediaryReturnsJourneyUrl("outstanding-payments", "IM9001144771")
 
       And("the intermediary has multiple payments available")
       payment.multiplePayments()
@@ -119,7 +119,7 @@ class PaymentsSpec extends BaseSpec {
       payment.selectClientForPayment("start-payment-as-intermediary\\/IM9001144773")
 
       Then("the intermediary is redirected to the returns service and advised there are no payments outstanding")
-      startReturn.checkIntermediaryReturnsJourneyUrl("outstanding-payments")
+      startReturn.checkIntermediaryReturnsJourneyUrl("outstanding-payments", "IM9001144773")
       payment.noOutstandingPayments()
     }
 

@@ -70,7 +70,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9001144667")
 
       Then("the intermediary is redirected to the submitted return on the IOSS returns service")
-      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns", "IM9001144667")
 
       When("the intermediary hits the back button the browser")
       dashboard.clickBackButton()
@@ -98,7 +98,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9001144669")
 
       Then("the intermediary is redirected to the submitted return on the IOSS returns service")
-      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns", "IM9001144669")
 
       When("the intermediary hits the back button the browser")
       dashboard.clickBackButton()
@@ -114,7 +114,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9001144671")
 
       Then("the intermediary is redirected to the submitted return on the IOSS returns service")
-      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns", "IM9001144671")
     }
 
     Scenario(
@@ -152,7 +152,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9002144669")
 
       Then("the intermediary is redirected to the submitted return on the IOSS returns service")
-      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns", "IM9002144669")
 
       When("the intermediary hits the back button the browser")
       dashboard.clickBackButton()
@@ -168,7 +168,7 @@ class PreviousRegistrationsSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-returns-history-as-intermediary\\/IM9002144672")
 
       Then("the intermediary is redirected to the submitted return on the IOSS returns service")
-      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns")
+      startReturn.checkIntermediaryReturnsJourneyUrl("past-returns", "IM9002144672")
     }
 
     Scenario(

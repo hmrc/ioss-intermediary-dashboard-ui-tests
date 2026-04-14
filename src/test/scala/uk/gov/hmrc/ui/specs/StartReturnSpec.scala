@@ -49,7 +49,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144778")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M1/start-return")
+      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M1/start-return", "IM9001144778")
     }
 
     Scenario(
@@ -79,7 +79,7 @@ class StartReturnSpec extends BaseSpec {
       startReturn.selectClientReturnLink("start-return-as-intermediary\\/IM9001144777")
 
       Then("the intermediary is redirected to the returns service to start the return")
-      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M3/start-return")
+      startReturn.checkIntermediaryReturnsJourneyUrl("2025-M3/start-return", "IM9001144777")
     }
 
     Scenario(
