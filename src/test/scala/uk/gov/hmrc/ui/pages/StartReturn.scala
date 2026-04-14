@@ -121,8 +121,8 @@ object StartReturn extends BasePage {
   def selectClientReturnLink(link: String): Unit =
     clickCssSelector(link)
 
-  def checkIntermediaryReturnsJourneyUrl(page: String): Unit =
-    getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl/$page")
+  def checkIntermediaryReturnsJourneyUrl(page: String, iossNumber: String): Unit =
+    getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl/$iossNumber/$page")
 
   def checkIntermediaryReturnsRedirect(): Unit =
     getCurrentUrl should startWith(s"$intermediaryReturnsUrl$intermediaryReturnsJourneyUrl")
