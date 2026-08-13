@@ -51,7 +51,7 @@ class PendingRegistrationsSpec extends BaseSpec {
 
       Then("the intermediary is on the client-not-activated page for the first client in the list")
       tileLinks.checkRegistrationJourneyUrl("client-not-activated/08c11d8b-e3e7-47b1-9fb1-d4efab81821d")
-      pendingRegistration.checkClientName("Company Name")
+      pendingRegistration.checkClientName("First Company")
 
       When("the intermediary clicks the back button")
       dashboard.clickBackButton()
