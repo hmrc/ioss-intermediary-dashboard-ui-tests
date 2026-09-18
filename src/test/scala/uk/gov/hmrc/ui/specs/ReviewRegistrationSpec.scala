@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ import uk.gov.hmrc.ui.pages.*
 
 class ReviewRegistrationSpec extends BaseSpec {
 
-  private val dashboard   = Dashboard
-  private val auth        = Auth
+  private val dashboard = Dashboard
+  private val auth      = Auth
   private val tileLinks = TileLinks
 
   Feature("Intermediary registration has not been updated for over 2 years") {
