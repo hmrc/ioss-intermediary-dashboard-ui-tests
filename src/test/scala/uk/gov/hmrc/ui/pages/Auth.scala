@@ -94,6 +94,7 @@ object Auth extends BasePage {
         case "openReturnsExcludedClient"                                      => "IN9005005005"
         case "multipleIntermediaryRegistrations"                              => "IN9002230002"
         case "onePreviousIntermediaryRegistration"                            => "IN9002230001"
+        case "reviewRegistration"                                             => "IN9002221222"
         case _                                                                => "IN9001112223"
       }
       sendKeys(By.id("input-1-0-value"), intNumber)
