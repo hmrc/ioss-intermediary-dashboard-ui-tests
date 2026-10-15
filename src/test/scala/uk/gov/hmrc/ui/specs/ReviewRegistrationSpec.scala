@@ -24,10 +24,10 @@ class ReviewRegistrationSpec extends BaseSpec {
   private val auth      = Auth
   private val tileLinks = TileLinks
 
-  Feature("Intermediary registration has not been updated for over 2 years") {
+  Feature("Intermediary registration has not been updated for over 6 months") {
 
     Scenario(
-      "Intermediary attempts to start return for client and has not updated their registration for 2 years - update registration "
+      "Intermediary attempts to start return for client and has not updated their registration for 6 months - update registration "
     ) {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
@@ -51,7 +51,7 @@ class ReviewRegistrationSpec extends BaseSpec {
     }
 
     Scenario(
-      "Intermediary attempts to start return for client and has not updated their registration for 2 years - skip update registration "
+      "Intermediary attempts to start return for client and has not updated their registration for 6 months - skip update registration "
     ) {
 
       Given("the intermediary accesses the IOSS Intermediary Dashboard Service")
