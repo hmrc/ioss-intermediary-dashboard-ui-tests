@@ -229,4 +229,24 @@ class StartReturnSpec extends BaseSpec {
     Then("the intermediary is redirected to the returns service to start the return")
     startReturn.checkIntermediaryReturnsRedirect()
   }
+
+  Scenario("No saved returns available") {
+
+    Given("an intermediary who has no saved returns logs into the dashboard")
+    auth.goToAuthorityWizard()
+    auth.loginUsingAuthorityWizard(true, true, "standard", "default")
+    dashboard.checkJourneyUrl("your-account")
+
+    When("the intermediary manually navigates to the select-client-saved-return page")
+    dashboard.goToPage("select-client-saved-return")
+
+    Then("the intermediary is on the no-saved-returns page")
+    dashboard.checkJourneyUrl("no-saved-returns")
+
+    And("the intermediary clicks on the Return to your account link")
+    dashboard.clickLink("return-to-your-account")
+
+    And("the intermediary is back at their dashboard")
+    dashboard.checkJourneyUrl("your-account")
+  }
 }
